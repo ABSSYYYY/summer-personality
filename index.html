@@ -5,683 +5,154 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Know Your Summer Personality — Times Prime</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(160deg, #5A177F 0%, #D30097 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.container {
-  background: #ffffff;
-  border-radius: 28px;
-  width: 100%;
-  max-width: 420px;
-  padding: 36px 28px;
-  min-height: 580px;
-  display: flex;
-  flex-direction: column;
-}
-.screen { display: none; flex-direction: column; flex: 1; }
-.screen.active { display: flex; }
-.brand {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #D30097;
-  margin-bottom: 28px;
-}
-.sun { font-size: 56px; margin-bottom: 20px; line-height: 1; }
-.landing-title { font-size: 30px; font-weight: 700; color: #5A177F; line-height: 1.2; margin-bottom: 12px; }
-.landing-sub { font-size: 15px; color: #888; line-height: 1.6; margin-bottom: 8px; }
-.landing-meta { font-size: 13px; color: #bbb; margin-bottom: 40px; }
-.spacer { flex: 1; }
-.btn-main {
-  display: block; width: 100%; padding: 17px;
-  background: linear-gradient(135deg, #5A177F, #D30097);
-  color: white; border: none; border-radius: 16px;
-  font-size: 16px; font-weight: 600; cursor: pointer;
-  font-family: inherit; letter-spacing: 0.02em; transition: opacity 0.15s;
-}
-.btn-main:hover { opacity: 0.9; }
-.progress-wrap { margin-bottom: 32px; }
-.progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.q-label { font-size: 12px; font-weight: 700; color: #D30097; letter-spacing: 0.06em; }
-.q-count { font-size: 12px; color: #bbb; font-weight: 500; }
-.progress-bar { height: 5px; background: #f0e8fa; border-radius: 3px; }
-.progress-fill {
-  height: 5px;
-  background: linear-gradient(90deg, #5A177F, #D30097);
-  border-radius: 3px; transition: width 0.4s ease;
-}
-.q-text { font-size: 21px; font-weight: 700; color: #1a1a1a; line-height: 1.35; margin-bottom: 28px; }
-.options { display: flex; flex-direction: column; gap: 11px; }
-.opt-btn {
-  background: #faf6fd; border: 1.5px solid #e8d5f5;
-  border-radius: 14px; padding: 16px 18px;
-  text-align: left; font-size: 15px; font-weight: 500;
-  color: #333; cursor: pointer; transition: all 0.15s;
-  font-family: inherit; line-height: 1.3;
-}
-.opt-btn:hover { border-color: #5A177F; background: #f0e6fa; color: #5A177F; }
-.opt-btn:active { transform: scale(0.98); }
-.you-are { font-size: 13px; color: #bbb; margin-bottom: 16px; }
-.result-icon-wrap {
-  width: 68px; height: 68px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 30px; margin-bottom: 14px;
-}
-.result-type-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px; }
-.result-name { font-size: 28px; font-weight: 700; color: #1a1a1a; margin-bottom: 12px; }
-.result-quote {
-  font-size: 14px; color: #666; font-style: italic;
-  line-height: 1.6; padding-left: 14px;
-  border-left: 3px solid #D30097; margin-bottom: 24px;
-}
-.offers-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; margin-bottom: 12px; }
-.offers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 28px; }
-.offer-card { border-radius: 12px; padding: 11px 13px; }
-.offer-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
-.offer-desc { font-size: 11px; color: #888; line-height: 1.35; }
-.share-btn {
-  display: block; width: 100%; padding: 17px;
-  background: linear-gradient(135deg, #5A177F, #D30097);
-  color: white; border: none; border-radius: 16px;
-  font-size: 16px; font-weight: 600; cursor: pointer;
-  font-family: inherit; transition: opacity 0.15s; text-align: center;
-}
-.share-btn:hover { opacity: 0.9; }
-.contest-box {
-  background: linear-gradient(135deg, #5A177F, #D30097);
-  border-radius: 16px; padding: 18px 20px;
-  margin-top: 16px; text-align: center;
-}
-.contest-title { font-size: 14px; font-weight: 700; color: white; margin-bottom: 6px; }
-.contest-body { font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.5; }
-.retake-wrap { text-align: center; margin-top: 16px; }
-.retake-link { font-size: 13px; color: #ccc; cursor: pointer; text-decoration: underline; }
-
-/* ── STORY CARD PAGE ── */
-#story-page {
-  display: none;
-  position: fixed; inset: 0;
-  background: #000;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  flex-direction: column;
-}
-#story-page.visible { display: flex; }
-.story-close {
-  position: absolute; top: 16px; right: 20px;
-  color: rgba(255,255,255,0.7); font-size: 28px;
-  cursor: pointer; background: none; border: none;
-  font-family: inherit; line-height: 1;
-}
-.story-hint {
-  color: rgba(255,255,255,0.6); font-size: 13px;
-  text-align: center; margin-top: 16px; padding: 0 20px;
-  line-height: 1.5;
-}
-/* The actual 9:16 card */
-.story-card {
-  width: min(90vw, 360px);
-  height: calc(min(90vw, 360px) * 16 / 9);
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 32px 24px 28px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Background gradient for all cards */
-.story-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(160deg, #5A177F 0%, #2D0060 50%, #D30097 100%);
-  z-index: 0;
-}
-/* Decorative circle top right */
-.story-card::after {
-  content: '';
-  position: absolute;
-  width: 200px; height: 200px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-  top: -60px; right: -60px;
-  z-index: 0;
-}
-
-.card-top { position: relative; z-index: 1; text-align: center; width: 100%; }
-.card-tp-logo {
-  font-size: 10px; font-weight: 800;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-}
-.card-season { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
-
-/* CHARACTER AREA */
-.card-character { position: relative; z-index: 1; flex: 1; display: flex; align-items: center; justify-content: center; }
-
-/* ── MUSAFIR CHARACTER ── */
-.char-musafir { position: relative; width: 120px; height: 150px; }
-.char-musafir .head {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: #FFD6A5; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-}
-.char-musafir .body {
-  width: 44px; height: 50px; border-radius: 10px 10px 6px 6px;
-  background: rgba(255,255,255,0.9);
-  position: absolute; top: 34px; left: 50%; transform: translateX(-50%);
-}
-.char-musafir .backpack {
-  width: 22px; height: 28px; border-radius: 6px;
-  background: #D30097;
-  position: absolute; top: 36px; left: 68px;
-}
-.char-musafir .leg-l {
-  width: 14px; height: 36px; border-radius: 6px;
-  background: rgba(255,255,255,0.8);
-  position: absolute; top: 80px; left: 30px;
-}
-.char-musafir .leg-r {
-  width: 14px; height: 36px; border-radius: 6px;
-  background: rgba(255,255,255,0.8);
-  position: absolute; top: 80px; left: 48px;
-}
-.char-musafir .compass {
-  width: 40px; height: 40px; border-radius: 50%;
-  border: 3px solid rgba(255,255,255,0.5);
-  position: absolute; bottom: -8px; right: 0;
-  display: flex; align-items: center; justify-content: center;
-}
-.char-musafir .compass-arrow {
-  width: 2px; height: 16px;
-  background: linear-gradient(#D30097 50%, rgba(255,255,255,0.4) 50%);
-  transform: rotate(45deg);
-}
-/* Stars around musafir */
-.char-musafir .star1 { position: absolute; top: 10px; left: 0; font-size: 14px; color: rgba(255,255,255,0.7); }
-.char-musafir .star2 { position: absolute; top: 50px; right: 4px; font-size: 10px; color: rgba(255,255,255,0.5); }
-
-/* ── EXPERIMENTER CHARACTER ── */
-.char-experimenter { position: relative; width: 120px; height: 150px; }
-.char-experimenter .head {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: #FFD6A5; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
-}
-.char-experimenter .body {
-  width: 44px; height: 48px; border-radius: 10px 10px 6px 6px;
-  background: rgba(255,255,255,0.9);
-  position: absolute; top: 54px; left: 50%; transform: translateX(-50%);
-}
-.char-experimenter .arm-up {
-  width: 10px; height: 34px; border-radius: 5px;
-  background: #FFD6A5;
-  position: absolute; top: 36px; left: 72px;
-  transform: rotate(-20deg);
-}
-.char-experimenter .bulb-outer {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: #FFC050;
-  position: absolute; top: 4px; left: 72px;
-  box-shadow: 0 0 12px rgba(255,192,80,0.6);
-}
-.char-experimenter .bulb-base {
-  width: 14px; height: 6px; border-radius: 2px;
-  background: rgba(255,255,255,0.7);
-  position: absolute; top: 24px; left: 76px;
-}
-.char-experimenter .leg-l {
-  width: 14px; height: 36px; border-radius: 6px;
-  background: rgba(255,255,255,0.8);
-  position: absolute; top: 98px; left: 30px;
-}
-.char-experimenter .leg-r {
-  width: 14px; height: 36px; border-radius: 6px;
-  background: rgba(255,255,255,0.8);
-  position: absolute; top: 98px; left: 48px;
-}
-.char-experimenter .spark1 { position: absolute; top: 0; left: 8px; font-size: 16px; color: #FFC050; }
-.char-experimenter .spark2 { position: absolute; top: 20px; right: 0; font-size: 12px; color: rgba(255,192,80,0.7); }
-
-/* ── POWER SAVING MODE CHARACTER ── */
-.char-powersaving { position: relative; width: 140px; height: 150px; }
-.char-powersaving .couch {
-  width: 130px; height: 50px; border-radius: 14px;
-  background: rgba(255,255,255,0.15);
-  border: 2px solid rgba(255,255,255,0.3);
-  position: absolute; bottom: 0; left: 0;
-}
-.char-powersaving .couch-arm-l {
-  width: 18px; height: 36px; border-radius: 8px;
-  background: rgba(255,255,255,0.2);
-  border: 2px solid rgba(255,255,255,0.3);
-  position: absolute; bottom: 0; left: 0;
-}
-.char-powersaving .couch-arm-r {
-  width: 18px; height: 36px; border-radius: 8px;
-  background: rgba(255,255,255,0.2);
-  border: 2px solid rgba(255,255,255,0.3);
-  position: absolute; bottom: 0; right: 0;
-}
-.char-powersaving .body {
-  width: 80px; height: 36px; border-radius: 10px;
-  background: rgba(255,255,255,0.9);
-  position: absolute; bottom: 30px; left: 24px;
-}
-.char-powersaving .head {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: #FFD6A5;
-  position: absolute; bottom: 60px; left: 20px;
-}
-.char-powersaving .zz1 {
-  position: absolute; bottom: 90px; left: 10px;
-  font-size: 18px; font-weight: 900;
-  color: rgba(255,255,255,0.5); letter-spacing: -2px;
-}
-.char-powersaving .zz2 {
-  position: absolute; bottom: 108px; left: 22px;
-  font-size: 13px; font-weight: 900;
-  color: rgba(255,255,255,0.3);
-}
-.char-powersaving .battery {
-  width: 32px; height: 16px; border-radius: 4px;
-  border: 2px solid rgba(255,255,255,0.6);
-  position: absolute; top: 0; right: 8px;
-  display: flex; align-items: center; padding: 2px;
-}
-.char-powersaving .battery-tip {
-  width: 4px; height: 8px; border-radius: 0 2px 2px 0;
-  background: rgba(255,255,255,0.6);
-  position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
-}
-.char-powersaving .battery-fill {
-  width: 6px; height: 100%; border-radius: 2px;
-  background: #D30097;
-}
-
-/* ── MAIN CHARACTER ── */
-.char-maincharacter { position: relative; width: 120px; height: 150px; }
-.char-maincharacter .head {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: #FFD6A5; position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
-}
-.char-maincharacter .crown {
-  width: 44px; height: 20px;
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  display: flex; align-items: flex-end; justify-content: center;
-}
-.char-maincharacter .crown-base {
-  width: 44px; height: 12px; border-radius: 0 0 6px 6px;
-  background: #FFC050;
-  position: absolute; bottom: 0; left: 0;
-}
-.char-maincharacter .crown-p1 {
-  width: 0; height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 14px solid #FFC050;
-  position: absolute; bottom: 10px; left: 2px;
-}
-.char-maincharacter .crown-p2 {
-  width: 0; height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 18px solid #FFC050;
-  position: absolute; bottom: 10px; left: 14px;
-}
-.char-maincharacter .crown-p3 {
-  width: 0; height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 14px solid #FFC050;
-  position: absolute; bottom: 10px; right: 2px;
-}
-.char-maincharacter .body {
-  width: 44px; height: 50px; border-radius: 10px 10px 6px 6px;
-  background: rgba(255,255,255,0.9);
-  position: absolute; top: 52px; left: 50%; transform: translateX(-50%);
-}
-.char-maincharacter .leg-l {
-  width: 14px; height: 36px; border-radius: 6px;
-  background: rgba(255,255,255,0.8);
-  position: absolute; top: 98px; left: 30px;
-}
-.char-maincharacter .leg-r {
-  width: 14px; height: 36px; border-radius: 6px;
-  background: rgba(255,255,255,0.8);
-  position: absolute; top: 98px; left: 48px;
-}
-.char-maincharacter .sp1 { position: absolute; top: 16px; left: 2px; font-size: 16px; color: #FFC050; }
-.char-maincharacter .sp2 { position: absolute; top: 30px; right: 2px; font-size: 20px; color: rgba(255,192,80,0.8); }
-.char-maincharacter .sp3 { position: absolute; top: 10px; right: 10px; font-size: 12px; color: rgba(255,255,255,0.6); }
-
-/* Card bottom text */
-.card-bottom { position: relative; z-index: 1; text-align: center; width: 100%; }
-.card-sublabel { font-size: 11px; color: rgba(255,255,255,0.55); margin-bottom: 6px; letter-spacing: 0.05em; }
-.card-pname {
-  font-size: 32px; font-weight: 800;
-  color: #ffffff; line-height: 1.1; margin-bottom: 8px;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-}
-.card-tagline {
-  font-size: 11px; color: rgba(255,255,255,0.7);
-  line-height: 1.5; margin-bottom: 14px;
-  font-style: italic;
-}
-.card-url-bar {
-  display: inline-block;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 20px;
-  padding: 5px 14px;
-  font-size: 10px;
-  color: rgba(255,255,255,0.8);
-  letter-spacing: 0.05em;
-}
-/* Decorative bottom circle */
-.card-deco-circle {
-  position: absolute;
-  width: 160px; height: 160px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.04);
-  bottom: -60px; left: -40px;
-  z-index: 0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(160deg,#5A177F 0%,#D30097 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{background:#fff;border-radius:28px;width:100%;max-width:420px;padding:36px 28px;min-height:580px;display:flex;flex-direction:column}
+.screen{display:none;flex-direction:column;flex:1}
+.screen.active{display:flex}
+.brand{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D30097;margin-bottom:28px}
+.sun{font-size:56px;margin-bottom:20px;line-height:1}
+.landing-title{font-size:30px;font-weight:700;color:#5A177F;line-height:1.2;margin-bottom:12px}
+.landing-sub{font-size:15px;color:#888;line-height:1.6;margin-bottom:8px}
+.landing-meta{font-size:13px;color:#bbb;margin-bottom:40px}
+.spacer{flex:1}
+.btn-main{display:block;width:100%;padding:17px;background:linear-gradient(135deg,#5A177F,#D30097);color:#fff;border:none;border-radius:16px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.btn-main:hover{opacity:.9}
+.progress-wrap{margin-bottom:32px}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.q-label{font-size:12px;font-weight:700;color:#D30097;letter-spacing:.06em}
+.q-count{font-size:12px;color:#bbb;font-weight:500}
+.progress-bar{height:5px;background:#f0e8fa;border-radius:3px}
+.progress-fill{height:5px;background:linear-gradient(90deg,#5A177F,#D30097);border-radius:3px;transition:width .4s ease}
+.q-text{font-size:21px;font-weight:700;color:#1a1a1a;line-height:1.35;margin-bottom:28px}
+.options{display:flex;flex-direction:column;gap:11px}
+.opt-btn{background:#faf6fd;border:1.5px solid #e8d5f5;border-radius:14px;padding:16px 18px;text-align:left;font-size:15px;font-weight:500;color:#333;cursor:pointer;transition:all .15s;font-family:inherit;line-height:1.3}
+.opt-btn:hover{border-color:#5A177F;background:#f0e6fa;color:#5A177F}
+.opt-btn:active{transform:scale(.98)}
+.you-are{font-size:13px;color:#bbb;margin-bottom:16px}
+.result-icon-wrap{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:14px}
+.result-type-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.result-name{font-size:28px;font-weight:700;color:#1a1a1a;margin-bottom:12px}
+.result-quote{font-size:14px;color:#666;font-style:italic;line-height:1.6;padding-left:14px;border-left:3px solid #D30097;margin-bottom:24px}
+.offers-section-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#bbb;margin-bottom:12px}
+.offers-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:28px}
+.offer-card{border-radius:12px;padding:11px 13px}
+.offer-name{font-size:13px;font-weight:600;margin-bottom:2px}
+.offer-desc{font-size:11px;color:#888;line-height:1.35}
+.share-btn{display:block;width:100%;padding:17px;background:linear-gradient(135deg,#5A177F,#D30097);color:#fff;border:none;border-radius:16px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .15s;text-align:center}
+.share-btn:hover{opacity:.9}
+.contest-box{background:linear-gradient(135deg,#5A177F,#D30097);border-radius:16px;padding:18px 20px;margin-top:16px;text-align:center}
+.contest-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px}
+.contest-body{font-size:12px;color:rgba(255,255,255,.85);line-height:1.5}
+#story-page{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);align-items:center;justify-content:center;z-index:9999;flex-direction:column}
+#story-page.visible{display:flex}
+.story-close{position:absolute;top:16px;right:20px;color:rgba(255,255,255,.7);font-size:30px;cursor:pointer;background:none;border:none;font-family:inherit}
+.story-hint{color:rgba(255,255,255,.5);font-size:12px;text-align:center;margin-top:14px;padding:0 24px;line-height:1.6;max-width:320px}
+.story-card{width:min(80vw,290px);height:calc(min(80vw,290px) * 16 / 9);border-radius:26px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:18px 16px 16px}
+.card-bg{position:absolute;inset:0;background:linear-gradient(155deg,#2D0B55 0%,#5A177F 45%,#9B1090 75%,#D30097 100%);z-index:0}
+.card-deco1{position:absolute;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.06);top:-60px;right:-60px;z-index:0}
+.card-deco2{position:absolute;width:120px;height:120px;border-radius:50%;border:1px solid rgba(255,255,255,.04);bottom:-40px;left:-40px;z-index:0}
+.card-top{position:relative;z-index:1;text-align:center;width:100%}
+.card-tp{font-size:9px;font-weight:800;letter-spacing:.18em;color:rgba(255,255,255,.6);margin-bottom:1px}
+.card-season{font-size:8px;color:rgba(255,255,255,.3);letter-spacing:.08em}
+.card-char{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-content:center}
+.card-char svg{filter:drop-shadow(0 8px 22px rgba(0,0,0,.45))}
+.card-bottom{position:relative;z-index:1;text-align:center;width:100%}
+.card-label{font-size:9px;color:rgba(255,255,255,.45);margin-bottom:3px;letter-spacing:.08em;text-transform:uppercase}
+.card-name{font-size:20px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:5px;letter-spacing:-.02em;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.card-quote{font-size:9px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:10px;font-style:italic}
+.card-pill{display:inline-block;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:3px 12px;font-size:8px;color:rgba(255,255,255,.65);letter-spacing:.06em}
 </style>
 </head>
 <body>
-
 <div class="container">
-
-  <!-- SCREEN 1: LANDING -->
-  <div class="screen active" id="screen-start">
-    <div class="brand">Times Prime</div>
-    <div class="sun">☀️</div>
-    <div class="landing-title">Know Your Summer Personality</div>
-    <div class="landing-sub">5 questions. Your summer, finally explained.</div>
-    <div class="landing-meta">Takes less than 60 seconds</div>
-    <div class="spacer"></div>
-    <button class="btn-main" onclick="startQuiz()">Find my personality →</button>
-  </div>
-
-  <!-- SCREEN 2: QUIZ -->
-  <div class="screen" id="screen-quiz">
-    <div class="progress-wrap">
-      <div class="progress-top">
-        <span class="q-label" id="q-label">Question 1</span>
-        <span class="q-count" id="q-count">1 / 5</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill" style="width:20%"></div>
-      </div>
-    </div>
-    <div class="q-text" id="q-text"></div>
-    <div class="options" id="options-wrap"></div>
-    <div class="spacer"></div>
-  </div>
-
-  <!-- SCREEN 3: RESULT -->
-  <div class="screen" id="screen-result">
-    <div class="brand">Times Prime</div>
-    <div class="you-are">Your summer personality is...</div>
-    <div class="result-icon-wrap" id="res-icon"></div>
-    <div class="result-type-label" id="res-type"></div>
-    <div class="result-name" id="res-name"></div>
-    <div class="result-quote" id="res-quote"></div>
-    <div class="offers-section-label">Your Times Prime summer kit</div>
-    <div class="offers-grid" id="offers-grid"></div>
-    <button class="share-btn" onclick="openStoryCard()">✦ See your shareable card</button>
-    <div class="contest-box">
-      <div class="contest-title">Win a free Times Prime membership</div>
-      <div class="contest-body">Share your card and tag @TimesPrime on Instagram.<br>5 winners every week all summer.</div>
-    </div>
-  </div>
-
+<div class="screen active" id="screen-start">
+<div class="brand">Times Prime</div>
+<div class="sun">&#9728;&#65039;</div>
+<div class="landing-title">Know Your Summer Personality</div>
+<div class="landing-sub">5 questions. Your summer, finally explained.</div>
+<div class="landing-meta">Takes less than 60 seconds</div>
+<div class="spacer"></div>
+<button class="btn-main" onclick="startQuiz()">Find my personality &#8594;</button>
 </div>
-
-<!-- FULL SCREEN STORY CARD -->
+<div class="screen" id="screen-quiz">
+<div class="progress-wrap">
+<div class="progress-top"><span class="q-label" id="q-label">Question 1</span><span class="q-count" id="q-count">1 / 5</span></div>
+<div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:20%"></div></div>
+</div>
+<div class="q-text" id="q-text"></div>
+<div class="options" id="options-wrap"></div>
+<div class="spacer"></div>
+</div>
+<div class="screen" id="screen-result">
+<div class="brand">Times Prime</div>
+<div class="you-are">Your summer personality is...</div>
+<div class="result-icon-wrap" id="res-icon"></div>
+<div class="result-type-label" id="res-type"></div>
+<div class="result-name" id="res-name"></div>
+<div class="result-quote" id="res-quote"></div>
+<div class="offers-section-label">Your Times Prime summer kit</div>
+<div class="offers-grid" id="offers-grid"></div>
+<button class="share-btn" onclick="openStory()">&#10022; See your shareable card</button>
+<div class="contest-box">
+<div class="contest-title">Win a free Times Prime membership</div>
+<div class="contest-body">Share your card and tag @TimesPrime on Instagram.<br>5 winners every week all summer.</div>
+</div>
+</div>
+</div>
 <div id="story-page">
-  <button class="story-close" onclick="closeStory()">✕</button>
-  <div class="story-card" id="story-card">
-    <div class="card-deco-circle"></div>
-    <div class="card-top">
-      <div class="card-tp-logo">Times Prime</div>
-      <div class="card-season">Summer 2026</div>
-    </div>
-    <div class="card-character" id="card-character"></div>
-    <div class="card-bottom">
-      <div class="card-sublabel">My summer personality</div>
-      <div class="card-pname" id="card-pname"></div>
-      <div class="card-tagline" id="card-tagline"></div>
-      <div class="card-url-bar">timesprime.com/summer</div>
-    </div>
-  </div>
-  <div class="story-hint">Long press the card to save it → Post to your Instagram story → Tag @TimesPrime to win a free membership</div>
+<button class="story-close" onclick="closeStory()">&#10005;</button>
+<div class="story-card">
+<div class="card-bg"></div><div class="card-deco1"></div><div class="card-deco2"></div>
+<div class="card-top"><div class="card-tp">TIMES PRIME</div><div class="card-season">SUMMER 2026</div></div>
+<div class="card-char" id="card-char"></div>
+<div class="card-bottom">
+<div class="card-label">my summer personality</div>
+<div class="card-name" id="card-name"></div>
+<div class="card-quote" id="card-quote"></div>
+<div class="card-pill">timesprime.com/summer</div>
 </div>
-
+</div>
+<div class="story-hint">&#128247; Long press the card &#8594; Save to camera roll &#8594; Post to Instagram story &#8594; Tag @TimesPrime to win</div>
+</div>
 <script>
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoj0w3_wRvb8Be_VjeF7hIwzCyHzcUEIa9g4tZkO3o_WqUxV6RBThPaRQdvRiIccNh/exec";
+var SU="https://script.google.com/macros/s/AKfycbxoj0w3_wRvb8Be_VjeF7hIwzCyHzcUEIa9g4tZkO3o_WqUxV6RBThPaRQdvRiIccNh/exec";
 
-var questions = [
-  {
-    text: "What are your go-to weekend plans?",
-    options: [
-      { label: "Pack and leave", type: "musafir" },
-      { label: "Find a new hobby", type: "experimenter" },
-      { label: "Stay in, order food", type: "powersaving" },
-      { label: "Skincare + workout", type: "maincharacter" }
-    ]
-  },
-  {
-    text: "Your summer vibe in one word?",
-    options: [
-      { label: "Roaming", type: "musafir" },
-      { label: "Experimenting", type: "experimenter" },
-      { label: "Unbothered", type: "powersaving" },
-      { label: "Glowing", type: "maincharacter" }
-    ]
-  },
-  {
-    text: "What would your summer Instagram bio say?",
-    options: [
-      { label: "Off exploring, see you never", type: "musafir" },
-      { label: "Trying new things, back soon", type: "experimenter" },
-      { label: "Home. Do not disturb", type: "powersaving" },
-      { label: "Glow up in progress, back better", type: "maincharacter" }
-    ]
-  },
-  {
-    text: "What do you spend most of your money on?",
-    options: [
-      { label: "Flights and hotels", type: "musafir" },
-      { label: "New hobby kits", type: "experimenter" },
-      { label: "Food delivery", type: "powersaving" },
-      { label: "Gym and skincare", type: "maincharacter" }
-    ]
-  },
-  {
-    text: "Your friends need you. Where do they find you?",
-    options: [
-      { label: "On a trip somewhere", type: "musafir" },
-      { label: "Trying something new", type: "experimenter" },
-      { label: "Home, obviously", type: "powersaving" },
-      { label: "At the gym", type: "maincharacter" }
-    ]
-  }
-];
+var CHARS={
+musafir:'<svg viewBox="0 0 200 260" width="145" height="188" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="hm" cx="38%" cy="30%" r="65%"><stop offset="0%" stop-color="#FFE8C8"/><stop offset="100%" stop-color="#F4956A"/></radialGradient><radialGradient id="bm" cx="35%" cy="28%" r="68%"><stop offset="0%" stop-color="#E8DEFF"/><stop offset="100%" stop-color="#B8A0E8"/></radialGradient></defs><ellipse cx="100" cy="254" rx="44" ry="8" fill="rgba(0,0,0,0.2)"/><rect x="120" y="106" width="34" height="52" rx="11" fill="#D30097"/><rect x="122" y="100" width="30" height="14" rx="7" fill="#AA007A"/><rect x="125" y="120" width="20" height="4" rx="2" fill="rgba(255,255,255,0.32)"/><rect x="125" y="128" width="20" height="4" rx="2" fill="rgba(255,255,255,0.32)"/><rect x="118" y="110" width="7" height="36" rx="3.5" fill="#880060"/><rect x="70" y="178" width="26" height="62" rx="13" fill="#5A177F"/><rect x="104" y="178" width="26" height="62" rx="13" fill="#5A177F"/><ellipse cx="83" cy="242" rx="18" ry="9" fill="#2D0060"/><ellipse cx="117" cy="242" rx="18" ry="9" fill="#2D0060"/><ellipse cx="77" cy="238" rx="7" ry="3" fill="rgba(255,255,255,0.16)"/><ellipse cx="111" cy="238" rx="7" ry="3" fill="rgba(255,255,255,0.16)"/><rect x="56" y="120" width="76" height="66" rx="18" fill="url(#bm)"/><path d="M 79 120 L 92 145 L 105 120" fill="none" stroke="rgba(90,23,127,0.22)" stroke-width="2.5"/><rect x="20" y="124" width="40" height="18" rx="9" fill="#F4956A" transform="rotate(-18,40,133)"/><ellipse cx="18" cy="140" rx="11" ry="11" fill="#F4956A"/><rect x="140" y="120" width="38" height="18" rx="9" fill="#F4956A" transform="rotate(18,159,129)"/><ellipse cx="182" cy="136" rx="11" ry="11" fill="#F4956A"/><rect x="85" y="104" width="28" height="20" rx="10" fill="#F4956A"/><ellipse cx="100" cy="76" rx="42" ry="44" fill="url(#hm)"/><path d="M 58 68 Q 62 28 100 26 Q 138 28 142 68 Q 134 44 100 42 Q 66 44 58 68Z" fill="#2C1505"/><ellipse cx="100" cy="33" rx="34" ry="13" fill="#2C1505"/><ellipse cx="56" cy="80" rx="11" ry="13" fill="#F4956A"/><ellipse cx="144" cy="80" rx="11" ry="13" fill="#F4956A"/><ellipse cx="56" cy="80" rx="6" ry="8" fill="#E07848"/><ellipse cx="144" cy="80" rx="6" ry="8" fill="#E07848"/><rect x="60" y="68" width="30" height="20" rx="10" fill="#18082E" opacity="0.93"/><rect x="96" y="68" width="30" height="20" rx="10" fill="#18082E" opacity="0.93"/><line x1="90" y1="78" x2="96" y2="78" stroke="#2D1050" stroke-width="3"/><line x1="54" y1="77" x2="60" y2="77" stroke="#2D1050" stroke-width="3"/><line x1="126" y1="77" x2="144" y2="77" stroke="#2D1050" stroke-width="3"/><ellipse cx="68" cy="73" rx="9" ry="5" fill="rgba(255,255,255,0.22)"/><ellipse cx="104" cy="73" rx="9" ry="5" fill="rgba(255,255,255,0.22)"/><path d="M 72 98 Q 100 118 128 98" stroke="#C05828" stroke-width="3.5" fill="white" stroke-linecap="round"/><path d="M 74 102 Q 100 116 126 102 L 126 108 Q 100 120 74 108Z" fill="white"/><ellipse cx="64" cy="96" rx="11" ry="7" fill="rgba(255,130,90,0.26)"/><ellipse cx="136" cy="96" rx="11" ry="7" fill="rgba(255,130,90,0.26)"/><circle cx="164" cy="24" r="13" fill="#D30097"/><circle cx="164" cy="20" r="7" fill="rgba(255,255,255,0.52)"/><line x1="164" y1="35" x2="164" y2="50" stroke="#D30097" stroke-width="4" stroke-linecap="round"/><text x="18" y="44" font-size="18" fill="rgba(255,255,255,0.72)">&#10022;</text><text x="170" y="62" font-size="12" fill="rgba(255,255,255,0.42)">&#10022;</text><text x="160" y="96" font-size="9" fill="rgba(255,255,255,0.32)">&#10022;</text></svg>',
 
-var personalities = {
-  musafir: {
-    type: "The Free Spirit",
-    name: "The Musafir",
-    quote: "Always has a trip planned. Hills, beaches, cities — doesn't matter. The first to say let's just go.",
-    icon: "🌍",
-    color: "#0F6E56",
-    bgLight: "#E1F5EE",
-    characterClass: "char-musafir",
-    characterHTML: '<div class="char-musafir"><div class="star1">✦</div><div class="star2">✦</div><div class="head"></div><div class="body"></div><div class="backpack"></div><div class="leg-l"></div><div class="leg-r"></div><div class="compass"><div class="compass-arrow"></div></div></div>',
-    offers: [
-      { name: "Paytm Flights", desc: "Flight booking discounts" },
-      { name: "Yatra", desc: "Hotel & holiday deals" },
-      { name: "Uber One", desc: "Cab rides covered" },
-      { name: "Discovery+", desc: "Travel docs & inspiration" }
-    ]
-  },
-  experimenter: {
-    type: "The Risk Taker",
-    name: "The Experimenter",
-    quote: "Not confused — just curious. New hobby every month, new obsession every week.",
-    icon: "🎯",
-    color: "#854F0B",
-    bgLight: "#FAEEDA",
-    characterClass: "char-experimenter",
-    characterHTML: '<div class="char-experimenter"><div class="spark1">✦</div><div class="spark2">✦</div><div class="bulb-outer"></div><div class="bulb-base"></div><div class="arm-up"></div><div class="head"></div><div class="body"></div><div class="leg-l"></div><div class="leg-r"></div></div>',
-    offers: [
-      { name: "EazyDiner", desc: "New restaurants every week" },
-      { name: "Gaana / Spotify", desc: "New music to discover" },
-      { name: "TP Experiences", desc: "Activities & workshops" },
-      { name: "Urban Company", desc: "New services to try" }
-    ]
-  },
-  powersaving: {
-    type: "The Indoor Expert",
-    name: "The Power Saving Mode",
-    quote: "Has cracked the code of Indian summer — AC on, food delivery on speed dial, OTT running.",
-    icon: "🛋️",
-    color: "#3C3489",
-    bgLight: "#EEEDFE",
-    characterClass: "char-powersaving",
-    characterHTML: '<div class="char-powersaving"><div class="battery"><div class="battery-fill"></div><div class="battery-tip"></div></div><div class="zz2">z</div><div class="zz1">zz</div><div class="head"></div><div class="body"></div><div class="couch-arm-l"></div><div class="couch-arm-r"></div><div class="couch"></div></div>',
-    offers: [
-      { name: "Swiggy One", desc: "Free delivery all summer" },
-      { name: "Hotstar / Zee5", desc: "OTT sorted all season" },
-      { name: "Spotify", desc: "Music & podcasts all day" },
-      { name: "PharmEasy", desc: "Essentials without stepping out" }
-    ]
-  },
-  maincharacter: {
-    type: "The Main Character Energy",
-    name: "The Main Character",
-    quote: "Turning summer into a self-improvement arc — skincare, gym, looking put-together despite the heat.",
-    icon: "✨",
-    color: "#72243E",
-    bgLight: "#FBEAF0",
-    characterClass: "char-maincharacter",
-    characterHTML: '<div class="char-maincharacter"><div class="sp1">✦</div><div class="sp2">✦</div><div class="sp3">✦</div><div class="crown"><div class="crown-base"></div><div class="crown-p1"></div><div class="crown-p2"></div><div class="crown-p3"></div></div><div class="head"></div><div class="body"></div><div class="leg-l"></div><div class="leg-r"></div></div>',
-    offers: [
-      { name: "Cult.fit", desc: "Gym & fitness classes" },
-      { name: "HealthifyMe", desc: "Nutrition & diet tracking" },
-      { name: "Apollo 24/7", desc: "Health checkups sorted" },
-      { name: "Myntra", desc: "Summer wardrobe sorted" }
-    ]
-  }
+experimenter:'<svg viewBox="0 0 200 260" width="145" height="188" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="he" cx="38%" cy="30%" r="65%"><stop offset="0%" stop-color="#FFE8C8"/><stop offset="100%" stop-color="#F4956A"/></radialGradient><radialGradient id="be" cx="35%" cy="28%" r="68%"><stop offset="0%" stop-color="#FFFBE0"/><stop offset="100%" stop-color="#EED880"/></radialGradient><radialGradient id="bulb" cx="38%" cy="32%" r="60%"><stop offset="0%" stop-color="#FFFCD0"/><stop offset="100%" stop-color="#FFC040"/></radialGradient></defs><ellipse cx="100" cy="254" rx="44" ry="8" fill="rgba(0,0,0,0.2)"/><rect x="122" y="56" width="16" height="68" rx="8" fill="#F4956A"/><ellipse cx="134" cy="38" rx="22" ry="22" fill="url(#bulb)"/><ellipse cx="134" cy="38" rx="22" ry="22" fill="rgba(255,255,255,0.1)"/><rect x="126" y="56" width="16" height="8" rx="3" fill="#C8902A"/><rect x="127" y="63" width="14" height="5" rx="2.5" fill="#A87020"/><line x1="134" y1="12" x2="134" y2="4" stroke="rgba(255,200,60,0.65)" stroke-width="3" stroke-linecap="round"/><line x1="150" y1="18" x2="156" y2="13" stroke="rgba(255,200,60,0.55)" stroke-width="2.5" stroke-linecap="round"/><line x1="116" y1="18" x2="110" y2="13" stroke="rgba(255,200,60,0.55)" stroke-width="2.5" stroke-linecap="round"/><line x1="158" y1="38" x2="166" y2="38" stroke="rgba(255,200,60,0.45)" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="126" cy="28" rx="8" ry="6" fill="rgba(255,255,255,0.48)"/><rect x="70" y="178" width="26" height="62" rx="13" fill="#854F0B"/><rect x="104" y="178" width="26" height="62" rx="13" fill="#854F0B"/><ellipse cx="83" cy="242" rx="18" ry="9" fill="#412402"/><ellipse cx="117" cy="242" rx="18" ry="9" fill="#412402"/><rect x="56" y="120" width="76" height="66" rx="18" fill="url(#be)"/><rect x="20" y="132" width="40" height="18" rx="9" fill="#F4956A" transform="rotate(12,40,141)"/><ellipse cx="18" cy="148" rx="11" ry="11" fill="#F4956A"/><rect x="85" y="104" width="28" height="20" rx="10" fill="#F4956A"/><ellipse cx="100" cy="76" rx="42" ry="44" fill="url(#he)"/><path d="M 58 66 Q 64 26 100 24 Q 136 26 142 66 Q 134 42 100 40 Q 66 42 58 66Z" fill="#1A3A14"/><ellipse cx="100" cy="31" rx="34" ry="13" fill="#1A3A14"/><ellipse cx="62" cy="36" rx="10" ry="8" fill="#1A3A14"/><ellipse cx="138" cy="34" rx="10" ry="8" fill="#1A3A14"/><ellipse cx="56" cy="80" rx="11" ry="13" fill="#F4956A"/><ellipse cx="144" cy="80" rx="11" ry="13" fill="#F4956A"/><ellipse cx="56" cy="80" rx="6" ry="8" fill="#E07848"/><ellipse cx="144" cy="80" rx="6" ry="8" fill="#E07848"/><rect x="60" y="66" width="30" height="21" rx="7" fill="none" stroke="#2C1A0E" stroke-width="3"/><rect x="96" y="66" width="30" height="21" rx="7" fill="none" stroke="#2C1A0E" stroke-width="3"/><line x1="90" y1="77" x2="96" y2="77" stroke="#2C1A0E" stroke-width="2.5"/><line x1="54" y1="76" x2="60" y2="76" stroke="#2C1A0E" stroke-width="2.5"/><line x1="126" y1="76" x2="144" y2="76" stroke="#2C1A0E" stroke-width="2.5"/><rect x="61" y="67" width="28" height="19" rx="6" fill="rgba(255,220,80,0.12)"/><rect x="97" y="67" width="28" height="19" rx="6" fill="rgba(255,220,80,0.12)"/><ellipse cx="75" cy="77" rx="8" ry="8" fill="white"/><ellipse cx="111" cy="77" rx="8" ry="8" fill="white"/><ellipse cx="75" cy="78" rx="5.5" ry="5.5" fill="#1A4A10"/><ellipse cx="111" cy="78" rx="5.5" ry="5.5" fill="#1A4A10"/><ellipse cx="75" cy="78" rx="3" ry="3" fill="#0a0a0a"/><ellipse cx="111" cy="78" rx="3" ry="3" fill="#0a0a0a"/><ellipse cx="77" cy="76" rx="2" ry="2" fill="white"/><ellipse cx="113" cy="76" rx="2" ry="2" fill="white"/><path d="M 60 62 Q 74 55 86 60" stroke="#2C1A0E" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M 96 58 Q 110 50 124 57" stroke="#2C1A0E" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M 72 96 Q 100 116 128 96" stroke="#C05828" stroke-width="3" fill="white" stroke-linecap="round"/><path d="M 74 100 Q 100 114 126 100 L 126 106 Q 100 118 74 106Z" fill="white"/><ellipse cx="64" cy="93" rx="11" ry="7" fill="rgba(255,130,90,0.24)"/><ellipse cx="136" cy="93" rx="11" ry="7" fill="rgba(255,130,90,0.24)"/><text x="14" y="36" font-size="20" fill="rgba(255,220,70,0.85)">&#10022;</text><text x="170" y="28" font-size="14" fill="rgba(255,220,70,0.58)">&#10022;</text><text x="24" y="82" font-size="11" fill="rgba(255,220,70,0.38)">&#10022;</text></svg>',
+
+powersaving:'<svg viewBox="0 0 200 260" width="145" height="188" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="hp" cx="38%" cy="30%" r="65%"><stop offset="0%" stop-color="#FFE8C8"/><stop offset="100%" stop-color="#F4956A"/></radialGradient><radialGradient id="pj" cx="35%" cy="28%" r="68%"><stop offset="0%" stop-color="#DCD4FF"/><stop offset="100%" stop-color="#A890EE"/></radialGradient><radialGradient id="couch" cx="30%" cy="22%" r="74%"><stop offset="0%" stop-color="#9068CC"/><stop offset="100%" stop-color="#5A177F"/></radialGradient></defs><ellipse cx="100" cy="254" rx="60" ry="8" fill="rgba(0,0,0,0.2)"/><rect x="12" y="196" width="176" height="52" rx="18" fill="url(#couch)"/><rect x="10" y="172" width="32" height="70" rx="16" fill="#7040AA"/><rect x="158" y="172" width="32" height="70" rx="16" fill="#7040AA"/><rect x="42" y="196" width="116" height="12" rx="6" fill="rgba(255,255,255,0.09)"/><rect x="44" y="170" width="112" height="38" rx="16" fill="url(#pj)"/><rect x="140" y="160" width="26" height="44" rx="13" fill="url(#pj)"/><ellipse cx="153" cy="161" rx="14" ry="11" fill="#F4956A"/><rect x="36" y="172" width="18" height="44" rx="9" fill="#F4956A" transform="rotate(-6,45,194)"/><rect x="14" y="188" width="26" height="44" rx="9" fill="#2D0060"/><circle cx="27" cy="202" r="6" fill="#D30097"/><rect x="17" y="214" width="9" height="5" rx="2.5" fill="rgba(255,255,255,0.28)"/><rect x="30" y="214" width="9" height="5" rx="2.5" fill="rgba(255,255,255,0.28)"/><rect x="17" y="223" width="9" height="5" rx="2.5" fill="rgba(255,255,255,0.18)"/><rect x="30" y="223" width="9" height="5" rx="2.5" fill="rgba(255,255,255,0.18)"/><rect x="82" y="130" width="28" height="22" rx="11" fill="#F4956A"/><ellipse cx="96" cy="106" rx="44" ry="46" fill="url(#hp)" transform="rotate(5,96,106)"/><path d="M 52 96 Q 58 52 96 50 Q 134 52 140 96 Q 132 68 96 66 Q 60 68 52 96Z" fill="#1A0A2E"/><ellipse cx="96" cy="57" rx="36" ry="14" fill="#1A0A2E"/><path d="M 90 50 Q 96 36 102 50" fill="#1A0A2E" stroke="#1A0A2E" stroke-width="5" stroke-linecap="round"/><ellipse cx="51" cy="108" rx="11" ry="13" fill="#F4956A"/><ellipse cx="141" cy="108" rx="11" ry="13" fill="#F4956A"/><ellipse cx="51" cy="108" rx="6" ry="8" fill="#E07848"/><ellipse cx="141" cy="108" rx="6" ry="8" fill="#E07848"/><path d="M 52 95 Q 96 64 140 95" stroke="#3C3489" stroke-width="8" fill="none" stroke-linecap="round"/><rect x="44" y="93" width="18" height="25" rx="9" fill="#3C3489"/><rect x="130" y="93" width="18" height="25" rx="9" fill="#3C3489"/><rect x="46" y="95" width="14" height="21" rx="7" fill="#534AB7"/><rect x="132" y="95" width="14" height="21" rx="7" fill="#534AB7"/><ellipse cx="76" cy="112" rx="10" ry="10" fill="white"/><ellipse cx="116" cy="112" rx="10" ry="10" fill="white"/><ellipse cx="76" cy="113" rx="7" ry="5" fill="#2C3A9A"/><ellipse cx="116" cy="113" rx="7" ry="5" fill="#2C3A9A"/><ellipse cx="76" cy="113" rx="4" ry="3" fill="#0a0a0a"/><ellipse cx="116" cy="113" rx="4" ry="3" fill="#0a0a0a"/><path d="M 66 107 Q 76 104 86 107" fill="#F4956A" stroke="#2C1A0E" stroke-width="1.5"/><path d="M 106 107 Q 116 104 126 107" fill="#F4956A" stroke="#2C1A0E" stroke-width="1.5"/><ellipse cx="78" cy="107" rx="1.5" ry="1.5" fill="white"/><ellipse cx="118" cy="107" rx="1.5" ry="1.5" fill="white"/><path d="M 64 103 Q 76 99 88 103" stroke="#2C1A0E" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M 104 103 Q 116 99 128 103" stroke="#2C1A0E" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M 78 124 Q 96 135 114 124" stroke="#C05828" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="64" cy="119" rx="11" ry="7" fill="rgba(255,130,90,0.28)"/><ellipse cx="128" cy="119" rx="11" ry="7" fill="rgba(255,130,90,0.28)"/><text x="148" y="72" font-size="22" font-weight="900" fill="rgba(255,255,255,0.48)" font-family="Arial">z</text><text x="162" y="54" font-size="16" font-weight="900" fill="rgba(255,255,255,0.32)" font-family="Arial">z</text><text x="172" y="40" font-size="11" font-weight="900" fill="rgba(255,255,255,0.2)" font-family="Arial">z</text><rect x="12" y="144" width="44" height="22" rx="6" fill="none" stroke="rgba(255,255,255,0.48)" stroke-width="2"/><rect x="56" y="150" width="6" height="10" rx="3" fill="rgba(255,255,255,0.38)"/><rect x="14" y="146" width="10" height="18" rx="4" fill="#D30097"/></svg>',
+
+maincharacter:'<svg viewBox="0 0 200 260" width="145" height="188" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="hmc" cx="38%" cy="30%" r="65%"><stop offset="0%" stop-color="#FFE8C8"/><stop offset="100%" stop-color="#F4956A"/></radialGradient><radialGradient id="bmc" cx="35%" cy="28%" r="68%"><stop offset="0%" stop-color="#FFE6F4"/><stop offset="100%" stop-color="#F09ACC"/></radialGradient><radialGradient id="crn" cx="32%" cy="28%" r="68%"><stop offset="0%" stop-color="#FFE866"/><stop offset="100%" stop-color="#FFA020"/></radialGradient></defs><ellipse cx="100" cy="254" rx="44" ry="8" fill="rgba(0,0,0,0.2)"/><rect x="66" y="178" width="28" height="64" rx="14" fill="#72243E"/><rect x="106" y="178" width="28" height="64" rx="14" fill="#72243E"/><ellipse cx="80" cy="244" rx="20" ry="10" fill="#4B1528"/><ellipse cx="120" cy="244" rx="20" ry="10" fill="#4B1528"/><ellipse cx="74" cy="239" rx="8" ry="3" fill="rgba(255,255,255,0.16)"/><ellipse cx="114" cy="239" rx="8" ry="3" fill="rgba(255,255,255,0.16)"/><rect x="54" y="118" width="92" height="68" rx="20" fill="url(#bmc)"/><path d="M 80 118 L 96 148 L 112 118" fill="none" stroke="rgba(180,50,120,0.28)" stroke-width="3"/><ellipse cx="100" cy="158" rx="6" ry="6" fill="rgba(211,0,151,0.38)"/><rect x="18" y="122" width="40" height="19" rx="9.5" fill="#F4956A" transform="rotate(-32,38,131)"/><ellipse cx="14" cy="142" rx="12" ry="12" fill="#F4956A"/><rect x="142" y="122" width="40" height="19" rx="9.5" fill="#F4956A" transform="rotate(32,162,131)"/><ellipse cx="186" cy="142" rx="12" ry="12" fill="#F4956A"/><rect x="85" y="104" width="30" height="22" rx="11" fill="#F4956A"/><ellipse cx="100" cy="76" rx="44" ry="46" fill="url(#hmc)"/><path d="M 56 68 Q 62 26 100 24 Q 138 26 144 68 Q 136 42 100 40 Q 64 42 56 68Z" fill="#0a0a0a"/><ellipse cx="100" cy="31" rx="36" ry="14" fill="#0a0a0a"/><path d="M 58 54 Q 72 40 88 48" stroke="#0a0a0a" stroke-width="8" fill="none" stroke-linecap="round"/><ellipse cx="56" cy="80" rx="11" ry="13" fill="#F4956A"/><ellipse cx="144" cy="80" rx="11" ry="13" fill="#F4956A"/><ellipse cx="56" cy="80" rx="6" ry="8" fill="#E07848"/><ellipse cx="144" cy="80" rx="6" ry="8" fill="#E07848"/><circle cx="56" cy="93" r="4.5" fill="#FFC050"/><circle cx="144" cy="93" r="4.5" fill="#FFC050"/><rect x="58" y="30" width="84" height="20" rx="5" fill="url(#crn)"/><polygon points="58,30 70,8 82,30" fill="url(#crn)"/><polygon points="82,30 100,6 118,30" fill="url(#crn)"/><polygon points="118,30 130,8 142,30" fill="url(#crn)"/><circle cx="70" cy="20" r="5" fill="#D30097"/><circle cx="100" cy="15" r="6.5" fill="#D30097"/><circle cx="130" cy="20" r="5" fill="#D30097"/><ellipse cx="70" cy="17" rx="2.5" ry="2" fill="rgba(255,255,255,0.52)"/><ellipse cx="100" cy="12" rx="3" ry="2" fill="rgba(255,255,255,0.52)"/><ellipse cx="130" cy="17" rx="2.5" ry="2" fill="rgba(255,255,255,0.52)"/><ellipse cx="76" cy="76" rx="11" ry="11" fill="white"/><ellipse cx="124" cy="76" rx="11" ry="11" fill="white"/><ellipse cx="76" cy="77" rx="7.5" ry="7.5" fill="#3A0A5A"/><ellipse cx="124" cy="77" rx="7.5" ry="7.5" fill="#3A0A5A"/><ellipse cx="76" cy="77" rx="4.5" ry="4.5" fill="#0a0a0a"/><ellipse cx="124" cy="77" rx="4.5" ry="4.5" fill="#0a0a0a"/><ellipse cx="78.5" cy="74.5" rx="2.5" ry="2.5" fill="white"/><ellipse cx="126.5" cy="74.5" rx="2.5" ry="2.5" fill="white"/><path d="M 64 64 Q 76 56 88 62" stroke="#0a0a0a" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M 112 62 Q 124 56 136 64" stroke="#0a0a0a" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M 70 98 Q 100 120 130 98" stroke="#C05828" stroke-width="4" fill="white" stroke-linecap="round"/><path d="M 72 103 Q 100 118 128 103 L 128 110 Q 100 124 72 110Z" fill="white"/><path d="M 72 110 Q 100 120 128 110" stroke="#E0BBBB" stroke-width="1.5" fill="none"/><ellipse cx="62" cy="96" rx="13" ry="9" fill="rgba(255,100,160,0.32)"/><ellipse cx="138" cy="96" rx="13" ry="9" fill="rgba(255,100,160,0.32)"/><text x="10" y="30" font-size="22" fill="rgba(255,220,70,0.92)">&#10022;</text><text x="170" y="24" font-size="18" fill="rgba(255,220,70,0.72)">&#10022;</text><text x="14" y="128" font-size="14" fill="rgba(255,170,220,0.68)">&#10022;</text><text x="174" y="120" font-size="16" fill="rgba(255,170,220,0.62)">&#10022;</text><text x="162" y="170" font-size="11" fill="rgba(255,220,70,0.48)">&#10022;</text><text x="20" y="168" font-size="11" fill="rgba(255,220,70,0.44)">&#10022;</text></svg>'
 };
 
-var scores = { musafir: 0, experimenter: 0, powersaving: 0, maincharacter: 0 };
-var answers = [];
-var currentQ = 0;
-var currentPersonality = null;
+var questions=[
+{text:"What are your go-to weekend plans?",options:[{label:"Pack and leave",type:"musafir"},{label:"Find a new hobby",type:"experimenter"},{label:"Stay in, order food",type:"powersaving"},{label:"Skincare + workout",type:"maincharacter"}]},
+{text:"Your summer vibe in one word?",options:[{label:"Roaming",type:"musafir"},{label:"Experimenting",type:"experimenter"},{label:"Unbothered",type:"powersaving"},{label:"Glowing",type:"maincharacter"}]},
+{text:"What would your summer Instagram bio say?",options:[{label:"Off exploring, see you never",type:"musafir"},{label:"Trying new things, back soon",type:"experimenter"},{label:"Home. Do not disturb",type:"powersaving"},{label:"Glow up in progress, back better",type:"maincharacter"}]},
+{text:"What do you spend most of your money on?",options:[{label:"Flights and hotels",type:"musafir"},{label:"New hobby kits",type:"experimenter"},{label:"Food delivery",type:"powersaving"},{label:"Gym and skincare",type:"maincharacter"}]},
+{text:"Your friends need you. Where do they find you?",options:[{label:"On a trip somewhere",type:"musafir"},{label:"Trying something new",type:"experimenter"},{label:"Home, obviously",type:"powersaving"},{label:"At the gym",type:"maincharacter"}]}
+];
 
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
-  document.getElementById(id).classList.add('active');
-}
+var personalities={
+musafir:{type:"The Free Spirit",name:"The Musafir",quote:"Always has a trip planned. Hills, beaches, cities — doesn't matter. The first to say let's just go.",icon:"&#127757;",color:"#0F6E56",bgLight:"#E1F5EE",offers:[{name:"Paytm Flights",desc:"Flight booking discounts"},{name:"Yatra",desc:"Hotel & holiday deals"},{name:"Uber One",desc:"Cab rides covered"},{name:"Discovery+",desc:"Travel docs & inspiration"}]},
+experimenter:{type:"The Risk Taker",name:"The Experimenter",quote:"Not confused — just curious. New hobby every month, new obsession every week.",icon:"&#127919;",color:"#854F0B",bgLight:"#FAEEDA",offers:[{name:"EazyDiner",desc:"New restaurants every week"},{name:"Gaana / Spotify",desc:"New music to discover"},{name:"TP Experiences",desc:"Activities & workshops"},{name:"Urban Company",desc:"New services to try"}]},
+powersaving:{type:"The Indoor Expert",name:"Power Saving Mode",quote:"Has cracked the code of Indian summer — AC on, food delivery on speed dial, OTT running.",icon:"&#128715;",color:"#3C3489",bgLight:"#EEEDFE",offers:[{name:"Swiggy One",desc:"Free delivery all summer"},{name:"Hotstar / Zee5",desc:"OTT sorted all season"},{name:"Spotify",desc:"Music & podcasts all day"},{name:"PharmEasy",desc:"Essentials without stepping out"}]},
+maincharacter:{type:"Main Character Energy",name:"The Main Character",quote:"Turning summer into a self-improvement arc — skincare, gym, looking put-together despite the heat.",icon:"&#10024;",color:"#72243E",bgLight:"#FBEAF0",offers:[{name:"Cult.fit",desc:"Gym & fitness classes"},{name:"HealthifyMe",desc:"Nutrition & diet tracking"},{name:"Apollo 24/7",desc:"Health checkups sorted"},{name:"Myntra",desc:"Summer wardrobe sorted"}]}
+};
 
-function startQuiz() {
-  scores = { musafir: 0, experimenter: 0, powersaving: 0, maincharacter: 0 };
-  answers = [];
-  currentQ = 0;
-  showScreen('screen-quiz');
-  renderQuestion();
-}
+var scores={musafir:0,experimenter:0,powersaving:0,maincharacter:0};
+var answers=[];var currentQ=0;var cp=null;
 
-function renderQuestion() {
-  var q = questions[currentQ];
-  document.getElementById('q-label').textContent = 'Question ' + (currentQ + 1);
-  document.getElementById('q-count').textContent = (currentQ + 1) + ' / 5';
-  document.getElementById('progress-fill').style.width = (((currentQ + 1) / 5) * 100) + '%';
-  document.getElementById('q-text').textContent = q.text;
-  var wrap = document.getElementById('options-wrap');
-  wrap.innerHTML = '';
-  q.options.forEach(function(opt) {
-    var btn = document.createElement('button');
-    btn.className = 'opt-btn';
-    btn.textContent = opt.label;
-    btn.onclick = function() { selectAnswer(opt.type, opt.label); };
-    wrap.appendChild(btn);
-  });
-}
-
-function selectAnswer(type, label) {
-  scores[type]++;
-  answers.push(label);
-  currentQ++;
-  if (currentQ < questions.length) {
-    renderQuestion();
-  } else {
-    showResult();
-  }
-}
-
-function showResult() {
-  var sorted = Object.entries(scores).sort(function(a, b) { return b[1] - a[1]; });
-  var winner = sorted[0][0];
-  currentPersonality = winner;
-  var p = personalities[winner];
-
-  var iconWrap = document.getElementById('res-icon');
-  iconWrap.textContent = p.icon;
-  iconWrap.style.background = p.bgLight;
-  iconWrap.style.fontSize = '30px';
-
-  document.getElementById('res-type').textContent = p.type;
-  document.getElementById('res-type').style.color = p.color;
-  document.getElementById('res-name').textContent = p.name;
-  document.getElementById('res-quote').textContent = p.quote;
-
-  var grid = document.getElementById('offers-grid');
-  grid.innerHTML = '';
-  p.offers.forEach(function(o) {
-    var card = document.createElement('div');
-    card.className = 'offer-card';
-    card.style.background = p.bgLight;
-    card.innerHTML = '<div class="offer-name" style="color:' + p.color + '">' + o.name + '</div><div class="offer-desc">' + o.desc + '</div>';
-    grid.appendChild(card);
-  });
-
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      q1: answers[0], q2: answers[1], q3: answers[2],
-      q4: answers[3], q5: answers[4], personality: p.name
-    })
-  }).catch(function() {});
-
-  showScreen('screen-result');
-}
-
-function openStoryCard() {
-  var p = personalities[currentPersonality];
-  document.getElementById('card-pname').textContent = p.name;
-  document.getElementById('card-tagline').textContent = '"' + p.quote + '"';
-  document.getElementById('card-character').innerHTML = p.characterHTML;
-  document.getElementById('story-page').classList.add('visible');
-}
-
-function closeStory() {
-  document.getElementById('story-page').classList.remove('visible');
-}
+function showScreen(id){document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active")});document.getElementById(id).classList.add("active")}
+function startQuiz(){scores={musafir:0,experimenter:0,powersaving:0,maincharacter:0};answers=[];currentQ=0;showScreen("screen-quiz");renderQ()}
+function renderQ(){var q=questions[currentQ];document.getElementById("q-label").textContent="Question "+(currentQ+1);document.getElementById("q-count").textContent=(currentQ+1)+" / 5";document.getElementById("progress-fill").style.width=(((currentQ+1)/5)*100)+"%";document.getElementById("q-text").textContent=q.text;var w=document.getElementById("options-wrap");w.innerHTML="";q.options.forEach(function(o){var b=document.createElement("button");b.className="opt-btn";b.textContent=o.label;b.onclick=function(){pick(o.type,o.label)};w.appendChild(b)})}
+function pick(type,label){scores[type]++;answers.push(label);currentQ++;if(currentQ<questions.length){renderQ()}else{showResult()}}
+function showResult(){var w=Object.entries(scores).sort(function(a,b){return b[1]-a[1]})[0][0];cp=w;var p=personalities[w];var iw=document.getElementById("res-icon");iw.innerHTML=p.icon;iw.style.background=p.bgLight;iw.style.fontSize="30px";document.getElementById("res-type").textContent=p.type;document.getElementById("res-type").style.color=p.color;document.getElementById("res-name").textContent=p.name;document.getElementById("res-quote").textContent=p.quote;var g=document.getElementById("offers-grid");g.innerHTML="";p.offers.forEach(function(o){var c=document.createElement("div");c.className="offer-card";c.style.background=p.bgLight;c.innerHTML="<div class='offer-name' style='color:"+p.color+"'>"+o.name+"</div><div class='offer-desc'>"+o.desc+"</div>";g.appendChild(c)});fetch(SU,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({q1:answers[0],q2:answers[1],q3:answers[2],q4:answers[3],q5:answers[4],personality:p.name})}).catch(function(){});showScreen("screen-result")}
+function openStory(){var p=personalities[cp];document.getElementById("card-char").innerHTML=CHARS[cp];document.getElementById("card-name").textContent=p.name;document.getElementById("card-quote").textContent='"'+p.quote+'"';document.getElementById("story-page").classList.add("visible")}
+function closeStory(){document.getElementById("story-page").classList.remove("visible")}
 </script>
 </body>
 </html>
