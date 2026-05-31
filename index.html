@@ -35,238 +35,371 @@ body {
   color: #D30097;
   margin-bottom: 28px;
 }
-/* LANDING */
 .sun { font-size: 56px; margin-bottom: 20px; line-height: 1; }
-.landing-title {
-  font-size: 30px;
-  font-weight: 700;
-  color: #5A177F;
-  line-height: 1.2;
-  margin-bottom: 12px;
-}
-.landing-sub {
-  font-size: 15px;
-  color: #888;
-  line-height: 1.6;
-  margin-bottom: 8px;
-}
+.landing-title { font-size: 30px; font-weight: 700; color: #5A177F; line-height: 1.2; margin-bottom: 12px; }
+.landing-sub { font-size: 15px; color: #888; line-height: 1.6; margin-bottom: 8px; }
 .landing-meta { font-size: 13px; color: #bbb; margin-bottom: 40px; }
 .spacer { flex: 1; }
-/* BUTTONS */
 .btn-main {
-  display: block;
-  width: 100%;
-  padding: 17px;
+  display: block; width: 100%; padding: 17px;
   background: linear-gradient(135deg, #5A177F, #D30097);
-  color: white;
-  border: none;
-  border-radius: 16px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  letter-spacing: 0.02em;
-  transition: opacity 0.15s;
+  color: white; border: none; border-radius: 16px;
+  font-size: 16px; font-weight: 600; cursor: pointer;
+  font-family: inherit; letter-spacing: 0.02em; transition: opacity 0.15s;
 }
 .btn-main:hover { opacity: 0.9; }
-.btn-outline {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  background: transparent;
-  color: #5A177F;
-  border: 1.5px solid #5A177F;
-  border-radius: 16px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.15s;
-  margin-top: 12px;
-}
-.btn-outline:hover { background: #f5eefa; }
-/* QUIZ */
 .progress-wrap { margin-bottom: 32px; }
-.progress-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
+.progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .q-label { font-size: 12px; font-weight: 700; color: #D30097; letter-spacing: 0.06em; }
 .q-count { font-size: 12px; color: #bbb; font-weight: 500; }
 .progress-bar { height: 5px; background: #f0e8fa; border-radius: 3px; }
 .progress-fill {
   height: 5px;
   background: linear-gradient(90deg, #5A177F, #D30097);
-  border-radius: 3px;
-  transition: width 0.4s ease;
+  border-radius: 3px; transition: width 0.4s ease;
 }
-.q-text {
-  font-size: 21px;
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.35;
-  margin-bottom: 28px;
-}
+.q-text { font-size: 21px; font-weight: 700; color: #1a1a1a; line-height: 1.35; margin-bottom: 28px; }
 .options { display: flex; flex-direction: column; gap: 11px; }
 .opt-btn {
-  background: #faf6fd;
-  border: 1.5px solid #e8d5f5;
-  border-radius: 14px;
-  padding: 16px 18px;
-  text-align: left;
-  font-size: 15px;
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-family: inherit;
-  line-height: 1.3;
+  background: #faf6fd; border: 1.5px solid #e8d5f5;
+  border-radius: 14px; padding: 16px 18px;
+  text-align: left; font-size: 15px; font-weight: 500;
+  color: #333; cursor: pointer; transition: all 0.15s;
+  font-family: inherit; line-height: 1.3;
 }
 .opt-btn:hover { border-color: #5A177F; background: #f0e6fa; color: #5A177F; }
 .opt-btn:active { transform: scale(0.98); }
-/* RESULT */
-.result-top { text-align: left; margin-bottom: 20px; }
 .you-are { font-size: 13px; color: #bbb; margin-bottom: 16px; }
 .result-icon-wrap {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  margin-bottom: 14px;
+  width: 68px; height: 68px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; margin-bottom: 14px;
 }
-.result-type-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-.result-name {
-  font-size: 28px;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 12px;
-}
+.result-type-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px; }
+.result-name { font-size: 28px; font-weight: 700; color: #1a1a1a; margin-bottom: 12px; }
 .result-quote {
-  font-size: 14px;
-  color: #666;
-  font-style: italic;
-  line-height: 1.6;
-  padding-left: 14px;
-  border-left: 3px solid #D30097;
-  margin-bottom: 24px;
+  font-size: 14px; color: #666; font-style: italic;
+  line-height: 1.6; padding-left: 14px;
+  border-left: 3px solid #D30097; margin-bottom: 24px;
 }
-.offers-section-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #bbb;
-  margin-bottom: 12px;
-}
-.offers-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-.offer-card {
-  border-radius: 12px;
-  padding: 11px 13px;
-}
-.offer-name {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
+.offers-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; margin-bottom: 12px; }
+.offers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 28px; }
+.offer-card { border-radius: 12px; padding: 11px 13px; }
+.offer-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
 .offer-desc { font-size: 11px; color: #888; line-height: 1.35; }
-/* CARD SCREEN */
-.card-intro { font-size: 13px; color: #bbb; margin-bottom: 20px; }
-.card-preview {
-  border-radius: 22px;
-  padding: 32px 24px;
-  margin-bottom: 20px;
-  text-align: center;
-  position: relative;
+.share-btn {
+  display: block; width: 100%; padding: 17px;
+  background: linear-gradient(135deg, #5A177F, #D30097);
+  color: white; border: none; border-radius: 16px;
+  font-size: 16px; font-weight: 600; cursor: pointer;
+  font-family: inherit; transition: opacity 0.15s; text-align: center;
 }
-.card-tp-brand {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  opacity: 0.65;
-}
-.card-my-label {
-  font-size: 12px;
-  font-weight: 500;
-  margin-bottom: 4px;
-  opacity: 0.75;
-}
-.card-pers-name {
-  font-size: 38px;
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 10px;
-}
-.card-tagline {
-  font-size: 13px;
-  line-height: 1.55;
-  margin-bottom: 24px;
-  opacity: 0.82;
-}
-.card-url { font-size: 11px; opacity: 0.55; }
-.share-note {
-  font-size: 13px;
-  color: #999;
-  text-align: center;
-  line-height: 1.5;
-  margin-bottom: 18px;
-}
+.share-btn:hover { opacity: 0.9; }
 .contest-box {
   background: linear-gradient(135deg, #5A177F, #D30097);
-  border-radius: 16px;
-  padding: 18px 20px;
-  margin-bottom: 20px;
-  text-align: center;
+  border-radius: 16px; padding: 18px 20px;
+  margin-top: 16px; text-align: center;
 }
-.contest-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 6px;
-}
+.contest-title { font-size: 14px; font-weight: 700; color: white; margin-bottom: 6px; }
 .contest-body { font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.5; }
-.retake-link {
-  text-align: center;
-  margin-top: 16px;
-  font-size: 13px;
-  color: #ccc;
-  cursor: pointer;
-  text-decoration: underline;
+.retake-wrap { text-align: center; margin-top: 16px; }
+.retake-link { font-size: 13px; color: #ccc; cursor: pointer; text-decoration: underline; }
+
+/* ── STORY CARD PAGE ── */
+#story-page {
+  display: none;
+  position: fixed; inset: 0;
+  background: #000;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  flex-direction: column;
 }
-.btn-download {
-  display: block;
-  width: 100%;
-  padding: 16px;
-  background: #1a1a1a;
-  color: white;
-  border: none;
-  border-radius: 16px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  margin-bottom: 0;
+#story-page.visible { display: flex; }
+.story-close {
+  position: absolute; top: 16px; right: 20px;
+  color: rgba(255,255,255,0.7); font-size: 28px;
+  cursor: pointer; background: none; border: none;
+  font-family: inherit; line-height: 1;
+}
+.story-hint {
+  color: rgba(255,255,255,0.6); font-size: 13px;
+  text-align: center; margin-top: 16px; padding: 0 20px;
+  line-height: 1.5;
+}
+/* The actual 9:16 card */
+.story-card {
+  width: min(90vw, 360px);
+  height: calc(min(90vw, 360px) * 16 / 9);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 24px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background gradient for all cards */
+.story-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #5A177F 0%, #2D0060 50%, #D30097 100%);
+  z-index: 0;
+}
+/* Decorative circle top right */
+.story-card::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  top: -60px; right: -60px;
+  z-index: 0;
+}
+
+.card-top { position: relative; z-index: 1; text-align: center; width: 100%; }
+.card-tp-logo {
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.card-season { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+/* CHARACTER AREA */
+.card-character { position: relative; z-index: 1; flex: 1; display: flex; align-items: center; justify-content: center; }
+
+/* ── MUSAFIR CHARACTER ── */
+.char-musafir { position: relative; width: 120px; height: 150px; }
+.char-musafir .head {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #FFD6A5; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+}
+.char-musafir .body {
+  width: 44px; height: 50px; border-radius: 10px 10px 6px 6px;
+  background: rgba(255,255,255,0.9);
+  position: absolute; top: 34px; left: 50%; transform: translateX(-50%);
+}
+.char-musafir .backpack {
+  width: 22px; height: 28px; border-radius: 6px;
+  background: #D30097;
+  position: absolute; top: 36px; left: 68px;
+}
+.char-musafir .leg-l {
+  width: 14px; height: 36px; border-radius: 6px;
+  background: rgba(255,255,255,0.8);
+  position: absolute; top: 80px; left: 30px;
+}
+.char-musafir .leg-r {
+  width: 14px; height: 36px; border-radius: 6px;
+  background: rgba(255,255,255,0.8);
+  position: absolute; top: 80px; left: 48px;
+}
+.char-musafir .compass {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.5);
+  position: absolute; bottom: -8px; right: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.char-musafir .compass-arrow {
+  width: 2px; height: 16px;
+  background: linear-gradient(#D30097 50%, rgba(255,255,255,0.4) 50%);
+  transform: rotate(45deg);
+}
+/* Stars around musafir */
+.char-musafir .star1 { position: absolute; top: 10px; left: 0; font-size: 14px; color: rgba(255,255,255,0.7); }
+.char-musafir .star2 { position: absolute; top: 50px; right: 4px; font-size: 10px; color: rgba(255,255,255,0.5); }
+
+/* ── EXPERIMENTER CHARACTER ── */
+.char-experimenter { position: relative; width: 120px; height: 150px; }
+.char-experimenter .head {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #FFD6A5; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+}
+.char-experimenter .body {
+  width: 44px; height: 48px; border-radius: 10px 10px 6px 6px;
+  background: rgba(255,255,255,0.9);
+  position: absolute; top: 54px; left: 50%; transform: translateX(-50%);
+}
+.char-experimenter .arm-up {
+  width: 10px; height: 34px; border-radius: 5px;
+  background: #FFD6A5;
+  position: absolute; top: 36px; left: 72px;
+  transform: rotate(-20deg);
+}
+.char-experimenter .bulb-outer {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #FFC050;
+  position: absolute; top: 4px; left: 72px;
+  box-shadow: 0 0 12px rgba(255,192,80,0.6);
+}
+.char-experimenter .bulb-base {
+  width: 14px; height: 6px; border-radius: 2px;
+  background: rgba(255,255,255,0.7);
+  position: absolute; top: 24px; left: 76px;
+}
+.char-experimenter .leg-l {
+  width: 14px; height: 36px; border-radius: 6px;
+  background: rgba(255,255,255,0.8);
+  position: absolute; top: 98px; left: 30px;
+}
+.char-experimenter .leg-r {
+  width: 14px; height: 36px; border-radius: 6px;
+  background: rgba(255,255,255,0.8);
+  position: absolute; top: 98px; left: 48px;
+}
+.char-experimenter .spark1 { position: absolute; top: 0; left: 8px; font-size: 16px; color: #FFC050; }
+.char-experimenter .spark2 { position: absolute; top: 20px; right: 0; font-size: 12px; color: rgba(255,192,80,0.7); }
+
+/* ── POWER SAVING MODE CHARACTER ── */
+.char-powersaving { position: relative; width: 140px; height: 150px; }
+.char-powersaving .couch {
+  width: 130px; height: 50px; border-radius: 14px;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  position: absolute; bottom: 0; left: 0;
+}
+.char-powersaving .couch-arm-l {
+  width: 18px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.3);
+  position: absolute; bottom: 0; left: 0;
+}
+.char-powersaving .couch-arm-r {
+  width: 18px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.3);
+  position: absolute; bottom: 0; right: 0;
+}
+.char-powersaving .body {
+  width: 80px; height: 36px; border-radius: 10px;
+  background: rgba(255,255,255,0.9);
+  position: absolute; bottom: 30px; left: 24px;
+}
+.char-powersaving .head {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #FFD6A5;
+  position: absolute; bottom: 60px; left: 20px;
+}
+.char-powersaving .zz1 {
+  position: absolute; bottom: 90px; left: 10px;
+  font-size: 18px; font-weight: 900;
+  color: rgba(255,255,255,0.5); letter-spacing: -2px;
+}
+.char-powersaving .zz2 {
+  position: absolute; bottom: 108px; left: 22px;
+  font-size: 13px; font-weight: 900;
+  color: rgba(255,255,255,0.3);
+}
+.char-powersaving .battery {
+  width: 32px; height: 16px; border-radius: 4px;
+  border: 2px solid rgba(255,255,255,0.6);
+  position: absolute; top: 0; right: 8px;
+  display: flex; align-items: center; padding: 2px;
+}
+.char-powersaving .battery-tip {
+  width: 4px; height: 8px; border-radius: 0 2px 2px 0;
+  background: rgba(255,255,255,0.6);
+  position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
+}
+.char-powersaving .battery-fill {
+  width: 6px; height: 100%; border-radius: 2px;
+  background: #D30097;
+}
+
+/* ── MAIN CHARACTER ── */
+.char-maincharacter { position: relative; width: 120px; height: 150px; }
+.char-maincharacter .head {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #FFD6A5; position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+}
+.char-maincharacter .crown {
+  width: 44px; height: 20px;
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.char-maincharacter .crown-base {
+  width: 44px; height: 12px; border-radius: 0 0 6px 6px;
+  background: #FFC050;
+  position: absolute; bottom: 0; left: 0;
+}
+.char-maincharacter .crown-p1 {
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 14px solid #FFC050;
+  position: absolute; bottom: 10px; left: 2px;
+}
+.char-maincharacter .crown-p2 {
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 18px solid #FFC050;
+  position: absolute; bottom: 10px; left: 14px;
+}
+.char-maincharacter .crown-p3 {
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 14px solid #FFC050;
+  position: absolute; bottom: 10px; right: 2px;
+}
+.char-maincharacter .body {
+  width: 44px; height: 50px; border-radius: 10px 10px 6px 6px;
+  background: rgba(255,255,255,0.9);
+  position: absolute; top: 52px; left: 50%; transform: translateX(-50%);
+}
+.char-maincharacter .leg-l {
+  width: 14px; height: 36px; border-radius: 6px;
+  background: rgba(255,255,255,0.8);
+  position: absolute; top: 98px; left: 30px;
+}
+.char-maincharacter .leg-r {
+  width: 14px; height: 36px; border-radius: 6px;
+  background: rgba(255,255,255,0.8);
+  position: absolute; top: 98px; left: 48px;
+}
+.char-maincharacter .sp1 { position: absolute; top: 16px; left: 2px; font-size: 16px; color: #FFC050; }
+.char-maincharacter .sp2 { position: absolute; top: 30px; right: 2px; font-size: 20px; color: rgba(255,192,80,0.8); }
+.char-maincharacter .sp3 { position: absolute; top: 10px; right: 10px; font-size: 12px; color: rgba(255,255,255,0.6); }
+
+/* Card bottom text */
+.card-bottom { position: relative; z-index: 1; text-align: center; width: 100%; }
+.card-sublabel { font-size: 11px; color: rgba(255,255,255,0.55); margin-bottom: 6px; letter-spacing: 0.05em; }
+.card-pname {
+  font-size: 32px; font-weight: 800;
+  color: #ffffff; line-height: 1.1; margin-bottom: 8px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.card-tagline {
+  font-size: 11px; color: rgba(255,255,255,0.7);
+  line-height: 1.5; margin-bottom: 14px;
+  font-style: italic;
+}
+.card-url-bar {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.05em;
+}
+/* Decorative bottom circle */
+.card-deco-circle {
+  position: absolute;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  bottom: -60px; left: -40px;
+  z-index: 0;
 }
 </style>
 </head>
 <body>
+
 <div class="container">
 
   <!-- SCREEN 1: LANDING -->
@@ -306,93 +439,96 @@ body {
     <div class="result-quote" id="res-quote"></div>
     <div class="offers-section-label">Your Times Prime summer kit</div>
     <div class="offers-grid" id="offers-grid"></div>
-    <button class="btn-main" onclick="showCard()">See your shareable card →</button>
-  </div>
-
-  <!-- SCREEN 4: CARD -->
-  <div class="screen" id="screen-card">
-    <div class="brand">Times Prime</div>
-    <div class="card-intro">Your personality card — screenshot and share it</div>
-    <div id="card-preview" class="card-preview">
-      <div class="card-tp-brand" id="card-brand-text">Times Prime · Summer 2026</div>
-      <div class="card-my-label" id="card-my">My summer personality</div>
-      <div class="card-pers-name" id="card-pname"></div>
-      <div class="card-tagline" id="card-tagline"></div>
-      <div class="card-url" id="card-url">timesprime.com/summer</div>
-    </div>
-    <div class="share-note">Screenshot this card and post it on your Instagram story or WhatsApp</div>
+    <button class="share-btn" onclick="openStoryCard()">✦ See your shareable card</button>
     <div class="contest-box">
       <div class="contest-title">Win a free Times Prime membership</div>
-      <div class="contest-body">Share your card and tag @TimesPrime on Instagram.<br>5 winners drawn every week all summer.</div>
+      <div class="contest-body">Share your card and tag @TimesPrime on Instagram.<br>5 winners every week all summer.</div>
     </div>
-    <button class="btn-download" onclick="downloadCard()">⬇ Download my card</button>
-    <div class="retake-link" onclick="retake()">Retake the quiz</div>
   </div>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoj0w3_wRvb8Be_VjeF7hIwzCyHzcUEIa9g4tZkO3o_WqUxV6RBThPaRQdvRiIccNh/exec";
+<!-- FULL SCREEN STORY CARD -->
+<div id="story-page">
+  <button class="story-close" onclick="closeStory()">✕</button>
+  <div class="story-card" id="story-card">
+    <div class="card-deco-circle"></div>
+    <div class="card-top">
+      <div class="card-tp-logo">Times Prime</div>
+      <div class="card-season">Summer 2026</div>
+    </div>
+    <div class="card-character" id="card-character"></div>
+    <div class="card-bottom">
+      <div class="card-sublabel">My summer personality</div>
+      <div class="card-pname" id="card-pname"></div>
+      <div class="card-tagline" id="card-tagline"></div>
+      <div class="card-url-bar">timesprime.com/summer</div>
+    </div>
+  </div>
+  <div class="story-hint">Long press the card to save it → Post to your Instagram story → Tag @TimesPrime to win a free membership</div>
+</div>
 
-const questions = [
+<script>
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoj0w3_wRvb8Be_VjeF7hIwzCyHzcUEIa9g4tZkO3o_WqUxV6RBThPaRQdvRiIccNh/exec";
+
+var questions = [
   {
     text: "What are your go-to weekend plans?",
     options: [
-      { label: "Pack and leave", type: "traveller" },
+      { label: "Pack and leave", type: "musafir" },
       { label: "Find a new hobby", type: "experimenter" },
-      { label: "Stay in, order food", type: "indoor" },
+      { label: "Stay in, order food", type: "powersaving" },
       { label: "Skincare + workout", type: "maincharacter" }
     ]
   },
   {
     text: "Your summer vibe in one word?",
     options: [
-      { label: "Roaming", type: "traveller" },
+      { label: "Roaming", type: "musafir" },
       { label: "Experimenting", type: "experimenter" },
-      { label: "Unbothered", type: "indoor" },
+      { label: "Unbothered", type: "powersaving" },
       { label: "Glowing", type: "maincharacter" }
     ]
   },
   {
     text: "What would your summer Instagram bio say?",
     options: [
-      { label: "Off exploring, see you never", type: "traveller" },
+      { label: "Off exploring, see you never", type: "musafir" },
       { label: "Trying new things, back soon", type: "experimenter" },
-      { label: "Home. Do not disturb", type: "indoor" },
+      { label: "Home. Do not disturb", type: "powersaving" },
       { label: "Glow up in progress, back better", type: "maincharacter" }
     ]
   },
   {
     text: "What do you spend most of your money on?",
     options: [
-      { label: "Flights and hotels", type: "traveller" },
+      { label: "Flights and hotels", type: "musafir" },
       { label: "New hobby kits", type: "experimenter" },
-      { label: "Food delivery", type: "indoor" },
+      { label: "Food delivery", type: "powersaving" },
       { label: "Gym and skincare", type: "maincharacter" }
     ]
   },
   {
     text: "Your friends need you. Where do they find you?",
     options: [
-      { label: "On a trip somewhere", type: "traveller" },
+      { label: "On a trip somewhere", type: "musafir" },
       { label: "Trying something new", type: "experimenter" },
-      { label: "Home, obviously", type: "indoor" },
+      { label: "Home, obviously", type: "powersaving" },
       { label: "At the gym", type: "maincharacter" }
     ]
   }
 ];
 
-const personalities = {
-  traveller: {
-    type: "The Free Spirit / The Musafir",
-    name: "The Traveller",
-    quote: "Always has a trip planned. Hills, beaches, cities — doesn't matter. The first to say 'let's just go.'",
+var personalities = {
+  musafir: {
+    type: "The Free Spirit",
+    name: "The Musafir",
+    quote: "Always has a trip planned. Hills, beaches, cities — doesn't matter. The first to say let's just go.",
     icon: "🌍",
     color: "#0F6E56",
     bgLight: "#E1F5EE",
-    cardBg: "#E1F5EE",
-    cardText: "#085041",
+    characterClass: "char-musafir",
+    characterHTML: '<div class="char-musafir"><div class="star1">✦</div><div class="star2">✦</div><div class="head"></div><div class="body"></div><div class="backpack"></div><div class="leg-l"></div><div class="leg-r"></div><div class="compass"><div class="compass-arrow"></div></div></div>',
     offers: [
       { name: "Paytm Flights", desc: "Flight booking discounts" },
       { name: "Yatra", desc: "Hotel & holiday deals" },
@@ -407,8 +543,8 @@ const personalities = {
     icon: "🎯",
     color: "#854F0B",
     bgLight: "#FAEEDA",
-    cardBg: "#FAEEDA",
-    cardText: "#412402",
+    characterClass: "char-experimenter",
+    characterHTML: '<div class="char-experimenter"><div class="spark1">✦</div><div class="spark2">✦</div><div class="bulb-outer"></div><div class="bulb-base"></div><div class="arm-up"></div><div class="head"></div><div class="body"></div><div class="leg-l"></div><div class="leg-r"></div></div>',
     offers: [
       { name: "EazyDiner", desc: "New restaurants every week" },
       { name: "Gaana / Spotify", desc: "New music to discover" },
@@ -416,15 +552,15 @@ const personalities = {
       { name: "Urban Company", desc: "New services to try" }
     ]
   },
-  indoor: {
-    type: "The Power Saving Mode",
-    name: "The Indoor",
+  powersaving: {
+    type: "The Indoor Expert",
+    name: "The Power Saving Mode",
     quote: "Has cracked the code of Indian summer — AC on, food delivery on speed dial, OTT running.",
     icon: "🛋️",
     color: "#3C3489",
     bgLight: "#EEEDFE",
-    cardBg: "#EEEDFE",
-    cardText: "#26215C",
+    characterClass: "char-powersaving",
+    characterHTML: '<div class="char-powersaving"><div class="battery"><div class="battery-fill"></div><div class="battery-tip"></div></div><div class="zz2">z</div><div class="zz1">zz</div><div class="head"></div><div class="body"></div><div class="couch-arm-l"></div><div class="couch-arm-r"></div><div class="couch"></div></div>',
     offers: [
       { name: "Swiggy One", desc: "Free delivery all summer" },
       { name: "Hotstar / Zee5", desc: "OTT sorted all season" },
@@ -439,8 +575,8 @@ const personalities = {
     icon: "✨",
     color: "#72243E",
     bgLight: "#FBEAF0",
-    cardBg: "#FBEAF0",
-    cardText: "#4B1528",
+    characterClass: "char-maincharacter",
+    characterHTML: '<div class="char-maincharacter"><div class="sp1">✦</div><div class="sp2">✦</div><div class="sp3">✦</div><div class="crown"><div class="crown-base"></div><div class="crown-p1"></div><div class="crown-p2"></div><div class="crown-p3"></div></div><div class="head"></div><div class="body"></div><div class="leg-l"></div><div class="leg-r"></div></div>',
     offers: [
       { name: "Cult.fit", desc: "Gym & fitness classes" },
       { name: "HealthifyMe", desc: "Nutrition & diet tracking" },
@@ -450,18 +586,18 @@ const personalities = {
   }
 };
 
-let scores = { traveller: 0, experimenter: 0, indoor: 0, maincharacter: 0 };
-let answers = [];
-let currentQ = 0;
-let currentPersonality = null;
+var scores = { musafir: 0, experimenter: 0, powersaving: 0, maincharacter: 0 };
+var answers = [];
+var currentQ = 0;
+var currentPersonality = null;
 
 function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
 }
 
 function startQuiz() {
-  scores = { traveller: 0, experimenter: 0, indoor: 0, maincharacter: 0 };
+  scores = { musafir: 0, experimenter: 0, powersaving: 0, maincharacter: 0 };
   answers = [];
   currentQ = 0;
   showScreen('screen-quiz');
@@ -469,15 +605,15 @@ function startQuiz() {
 }
 
 function renderQuestion() {
-  const q = questions[currentQ];
+  var q = questions[currentQ];
   document.getElementById('q-label').textContent = 'Question ' + (currentQ + 1);
   document.getElementById('q-count').textContent = (currentQ + 1) + ' / 5';
   document.getElementById('progress-fill').style.width = (((currentQ + 1) / 5) * 100) + '%';
   document.getElementById('q-text').textContent = q.text;
-  const wrap = document.getElementById('options-wrap');
+  var wrap = document.getElementById('options-wrap');
   wrap.innerHTML = '';
   q.options.forEach(function(opt) {
-    const btn = document.createElement('button');
+    var btn = document.createElement('button');
     btn.className = 'opt-btn';
     btn.textContent = opt.label;
     btn.onclick = function() { selectAnswer(opt.type, opt.label); };
@@ -497,12 +633,12 @@ function selectAnswer(type, label) {
 }
 
 function showResult() {
-  const sorted = Object.entries(scores).sort(function(a, b) { return b[1] - a[1]; });
-  const winner = sorted[0][0];
+  var sorted = Object.entries(scores).sort(function(a, b) { return b[1] - a[1]; });
+  var winner = sorted[0][0];
   currentPersonality = winner;
-  const p = personalities[winner];
+  var p = personalities[winner];
 
-  const iconWrap = document.getElementById('res-icon');
+  var iconWrap = document.getElementById('res-icon');
   iconWrap.textContent = p.icon;
   iconWrap.style.background = p.bgLight;
   iconWrap.style.fontSize = '30px';
@@ -512,10 +648,10 @@ function showResult() {
   document.getElementById('res-name').textContent = p.name;
   document.getElementById('res-quote').textContent = p.quote;
 
-  const grid = document.getElementById('offers-grid');
+  var grid = document.getElementById('offers-grid');
   grid.innerHTML = '';
   p.offers.forEach(function(o) {
-    const card = document.createElement('div');
+    var card = document.createElement('div');
     card.className = 'offer-card';
     card.style.background = p.bgLight;
     card.innerHTML = '<div class="offer-name" style="color:' + p.color + '">' + o.name + '</div><div class="offer-desc">' + o.desc + '</div>';
@@ -535,31 +671,16 @@ function showResult() {
   showScreen('screen-result');
 }
 
-function showCard() {
-  const p = personalities[currentPersonality];
-  const preview = document.getElementById('card-preview');
-  preview.style.background = p.cardBg;
-  const els = ['card-brand-text', 'card-my', 'card-pname', 'card-tagline', 'card-url'];
-  els.forEach(function(id) {
-    document.getElementById(id).style.color = p.cardText;
-  });
+function openStoryCard() {
+  var p = personalities[currentPersonality];
   document.getElementById('card-pname').textContent = p.name;
   document.getElementById('card-tagline').textContent = '"' + p.quote + '"';
-  showScreen('screen-card');
+  document.getElementById('card-character').innerHTML = p.characterHTML;
+  document.getElementById('story-page').classList.add('visible');
 }
 
-function downloadCard() {
-  const card = document.getElementById('card-preview');
-  html2canvas(card, { scale: 3, useCORS: true, backgroundColor: null }).then(function(canvas) {
-    const link = document.createElement('a');
-    link.download = 'my-summer-personality.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  });
-}
-
-function retake() {
-  startQuiz();
+function closeStory() {
+  document.getElementById('story-page').classList.remove('visible');
 }
 </script>
 </body>
