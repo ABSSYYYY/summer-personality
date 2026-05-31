@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know Your Summer Personality — Times Prime</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(160deg, #5A177F 0%, #D30097 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.container {
+  background: #ffffff;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 28px;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+}
+.screen { display: none; flex-direction: column; flex: 1; }
+.screen.active { display: flex; }
+.brand {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D30097;
+  margin-bottom: 28px;
+}
+/* LANDING */
+.sun { font-size: 56px; margin-bottom: 20px; line-height: 1; }
+.landing-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #5A177F;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.landing-sub {
+  font-size: 15px;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.landing-meta { font-size: 13px; color: #bbb; margin-bottom: 40px; }
+.spacer { flex: 1; }
+/* BUTTONS */
+.btn-main {
+  display: block;
+  width: 100%;
+  padding: 17px;
+  background: linear-gradient(135deg, #5A177F, #D30097);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+  transition: opacity 0.15s;
+}
+.btn-main:hover { opacity: 0.9; }
+.btn-outline {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: transparent;
+  color: #5A177F;
+  border: 1.5px solid #5A177F;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  margin-top: 12px;
+}
+.btn-outline:hover { background: #f5eefa; }
+/* QUIZ */
+.progress-wrap { margin-bottom: 32px; }
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.q-label { font-size: 12px; font-weight: 700; color: #D30097; letter-spacing: 0.06em; }
+.q-count { font-size: 12px; color: #bbb; font-weight: 500; }
+.progress-bar { height: 5px; background: #f0e8fa; border-radius: 3px; }
+.progress-fill {
+  height: 5px;
+  background: linear-gradient(90deg, #5A177F, #D30097);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+.q-text {
+  font-size: 21px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.35;
+  margin-bottom: 28px;
+}
+.options { display: flex; flex-direction: column; gap: 11px; }
+.opt-btn {
+  background: #faf6fd;
+  border: 1.5px solid #e8d5f5;
+  border-radius: 14px;
+  padding: 16px 18px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  line-height: 1.3;
+}
+.opt-btn:hover { border-color: #5A177F; background: #f0e6fa; color: #5A177F; }
+.opt-btn:active { transform: scale(0.98); }
+/* RESULT */
+.result-top { text-align: left; margin-bottom: 20px; }
+.you-are { font-size: 13px; color: #bbb; margin-bottom: 16px; }
+.result-icon-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-bottom: 14px;
+}
+.result-type-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.result-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+.result-quote {
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  line-height: 1.6;
+  padding-left: 14px;
+  border-left: 3px solid #D30097;
+  margin-bottom: 24px;
+}
+.offers-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 12px;
+}
+.offers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.offer-card {
+  border-radius: 12px;
+  padding: 11px 13px;
+}
+.offer-name {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.offer-desc { font-size: 11px; color: #888; line-height: 1.35; }
+/* CARD SCREEN */
+.card-intro { font-size: 13px; color: #bbb; margin-bottom: 20px; }
+.card-preview {
+  border-radius: 22px;
+  padding: 32px 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+.card-tp-brand {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity: 0.65;
+}
+.card-my-label {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  opacity: 0.75;
+}
+.card-pers-name {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.card-tagline {
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 24px;
+  opacity: 0.82;
+}
+.card-url { font-size: 11px; opacity: 0.55; }
+.share-note {
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+.contest-box {
+  background: linear-gradient(135deg, #5A177F, #D30097);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.contest-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+.contest-body { font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+.retake-link {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #ccc;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.btn-download {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  margin-bottom: 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- SCREEN 1: LANDING -->
+  <div class="screen active" id="screen-start">
+    <div class="brand">Times Prime</div>
+    <div class="sun">☀️</div>
+    <div class="landing-title">Know Your Summer Personality</div>
+    <div class="landing-sub">5 questions. Your summer, finally explained.</div>
+    <div class="landing-meta">Takes less than 60 seconds</div>
+    <div class="spacer"></div>
+    <button class="btn-main" onclick="startQuiz()">Find my personality →</button>
+  </div>
+
+  <!-- SCREEN 2: QUIZ -->
+  <div class="screen" id="screen-quiz">
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span class="q-label" id="q-label">Question 1</span>
+        <span class="q-count" id="q-count">1 / 5</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:20%"></div>
+      </div>
+    </div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="options-wrap"></div>
+    <div class="spacer"></div>
+  </div>
+
+  <!-- SCREEN 3: RESULT -->
+  <div class="screen" id="screen-result">
+    <div class="brand">Times Prime</div>
+    <div class="you-are">Your summer personality is...</div>
+    <div class="result-icon-wrap" id="res-icon"></div>
+    <div class="result-type-label" id="res-type"></div>
+    <div class="result-name" id="res-name"></div>
+    <div class="result-quote" id="res-quote"></div>
+    <div class="offers-section-label">Your Times Prime summer kit</div>
+    <div class="offers-grid" id="offers-grid"></div>
+    <button class="btn-main" onclick="showCard()">See your shareable card →</button>
+  </div>
+
+  <!-- SCREEN 4: CARD -->
+  <div class="screen" id="screen-card">
+    <div class="brand">Times Prime</div>
+    <div class="card-intro">Your personality card — screenshot and share it</div>
+    <div id="card-preview" class="card-preview">
+      <div class="card-tp-brand" id="card-brand-text">Times Prime · Summer 2026</div>
+      <div class="card-my-label" id="card-my">My summer personality</div>
+      <div class="card-pers-name" id="card-pname"></div>
+      <div class="card-tagline" id="card-tagline"></div>
+      <div class="card-url" id="card-url">timesprime.com/summer</div>
+    </div>
+    <div class="share-note">Screenshot this card and post it on your Instagram story or WhatsApp</div>
+    <div class="contest-box">
+      <div class="contest-title">Win a free Times Prime membership</div>
+      <div class="contest-body">Share your card and tag @TimesPrime on Instagram.<br>5 winners drawn every week all summer.</div>
+    </div>
+    <button class="btn-download" onclick="downloadCard()">⬇ Download my card</button>
+    <div class="retake-link" onclick="retake()">Retake the quiz</div>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxoj0w3_wRvb8Be_VjeF7hIwzCyHzcUEIa9g4tZkO3o_WqUxV6RBThPaRQdvRiIccNh/exec";
+
+const questions = [
+  {
+    text: "What are your go-to weekend plans?",
+    options: [
+      { label: "Pack and leave", type: "traveller" },
+      { label: "Find a new hobby", type: "experimenter" },
+      { label: "Stay in, order food", type: "indoor" },
+      { label: "Skincare + workout", type: "maincharacter" }
+    ]
+  },
+  {
+    text: "Your summer vibe in one word?",
+    options: [
+      { label: "Roaming", type: "traveller" },
+      { label: "Experimenting", type: "experimenter" },
+      { label: "Unbothered", type: "indoor" },
+      { label: "Glowing", type: "maincharacter" }
+    ]
+  },
+  {
+    text: "What would your summer Instagram bio say?",
+    options: [
+      { label: "Off exploring, see you never", type: "traveller" },
+      { label: "Trying new things, back soon", type: "experimenter" },
+      { label: "Home. Do not disturb", type: "indoor" },
+      { label: "Glow up in progress, back better", type: "maincharacter" }
+    ]
+  },
+  {
+    text: "What do you spend most of your money on?",
+    options: [
+      { label: "Flights and hotels", type: "traveller" },
+      { label: "New hobby kits", type: "experimenter" },
+      { label: "Food delivery", type: "indoor" },
+      { label: "Gym and skincare", type: "maincharacter" }
+    ]
+  },
+  {
+    text: "Your friends need you. Where do they find you?",
+    options: [
+      { label: "On a trip somewhere", type: "traveller" },
+      { label: "Trying something new", type: "experimenter" },
+      { label: "Home, obviously", type: "indoor" },
+      { label: "At the gym", type: "maincharacter" }
+    ]
+  }
+];
+
+const personalities = {
+  traveller: {
+    type: "The Free Spirit / The Musafir",
+    name: "The Traveller",
+    quote: "Always has a trip planned. Hills, beaches, cities — doesn't matter. The first to say 'let's just go.'",
+    icon: "🌍",
+    color: "#0F6E56",
+    bgLight: "#E1F5EE",
+    cardBg: "#E1F5EE",
+    cardText: "#085041",
+    offers: [
+      { name: "Paytm Flights", desc: "Flight booking discounts" },
+      { name: "Yatra", desc: "Hotel & holiday deals" },
+      { name: "Uber One", desc: "Cab rides covered" },
+      { name: "Discovery+", desc: "Travel docs & inspiration" }
+    ]
+  },
+  experimenter: {
+    type: "The Risk Taker",
+    name: "The Experimenter",
+    quote: "Not confused — just curious. New hobby every month, new obsession every week.",
+    icon: "🎯",
+    color: "#854F0B",
+    bgLight: "#FAEEDA",
+    cardBg: "#FAEEDA",
+    cardText: "#412402",
+    offers: [
+      { name: "EazyDiner", desc: "New restaurants every week" },
+      { name: "Gaana / Spotify", desc: "New music to discover" },
+      { name: "TP Experiences", desc: "Activities & workshops" },
+      { name: "Urban Company", desc: "New services to try" }
+    ]
+  },
+  indoor: {
+    type: "The Power Saving Mode",
+    name: "The Indoor",
+    quote: "Has cracked the code of Indian summer — AC on, food delivery on speed dial, OTT running.",
+    icon: "🛋️",
+    color: "#3C3489",
+    bgLight: "#EEEDFE",
+    cardBg: "#EEEDFE",
+    cardText: "#26215C",
+    offers: [
+      { name: "Swiggy One", desc: "Free delivery all summer" },
+      { name: "Hotstar / Zee5", desc: "OTT sorted all season" },
+      { name: "Spotify", desc: "Music & podcasts all day" },
+      { name: "PharmEasy", desc: "Essentials without stepping out" }
+    ]
+  },
+  maincharacter: {
+    type: "The Main Character Energy",
+    name: "The Main Character",
+    quote: "Turning summer into a self-improvement arc — skincare, gym, looking put-together despite the heat.",
+    icon: "✨",
+    color: "#72243E",
+    bgLight: "#FBEAF0",
+    cardBg: "#FBEAF0",
+    cardText: "#4B1528",
+    offers: [
+      { name: "Cult.fit", desc: "Gym & fitness classes" },
+      { name: "HealthifyMe", desc: "Nutrition & diet tracking" },
+      { name: "Apollo 24/7", desc: "Health checkups sorted" },
+      { name: "Myntra", desc: "Summer wardrobe sorted" }
+    ]
+  }
+};
+
+let scores = { traveller: 0, experimenter: 0, indoor: 0, maincharacter: 0 };
+let answers = [];
+let currentQ = 0;
+let currentPersonality = null;
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function startQuiz() {
+  scores = { traveller: 0, experimenter: 0, indoor: 0, maincharacter: 0 };
+  answers = [];
+  currentQ = 0;
+  showScreen('screen-quiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('q-label').textContent = 'Question ' + (currentQ + 1);
+  document.getElementById('q-count').textContent = (currentQ + 1) + ' / 5';
+  document.getElementById('progress-fill').style.width = (((currentQ + 1) / 5) * 100) + '%';
+  document.getElementById('q-text').textContent = q.text;
+  const wrap = document.getElementById('options-wrap');
+  wrap.innerHTML = '';
+  q.options.forEach(function(opt) {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.textContent = opt.label;
+    btn.onclick = function() { selectAnswer(opt.type, opt.label); };
+    wrap.appendChild(btn);
+  });
+}
+
+function selectAnswer(type, label) {
+  scores[type]++;
+  answers.push(label);
+  currentQ++;
+  if (currentQ < questions.length) {
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  const sorted = Object.entries(scores).sort(function(a, b) { return b[1] - a[1]; });
+  const winner = sorted[0][0];
+  currentPersonality = winner;
+  const p = personalities[winner];
+
+  const iconWrap = document.getElementById('res-icon');
+  iconWrap.textContent = p.icon;
+  iconWrap.style.background = p.bgLight;
+  iconWrap.style.fontSize = '30px';
+
+  document.getElementById('res-type').textContent = p.type;
+  document.getElementById('res-type').style.color = p.color;
+  document.getElementById('res-name').textContent = p.name;
+  document.getElementById('res-quote').textContent = p.quote;
+
+  const grid = document.getElementById('offers-grid');
+  grid.innerHTML = '';
+  p.offers.forEach(function(o) {
+    const card = document.createElement('div');
+    card.className = 'offer-card';
+    card.style.background = p.bgLight;
+    card.innerHTML = '<div class="offer-name" style="color:' + p.color + '">' + o.name + '</div><div class="offer-desc">' + o.desc + '</div>';
+    grid.appendChild(card);
+  });
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      q1: answers[0], q2: answers[1], q3: answers[2],
+      q4: answers[3], q5: answers[4], personality: p.name
+    })
+  }).catch(function() {});
+
+  showScreen('screen-result');
+}
+
+function showCard() {
+  const p = personalities[currentPersonality];
+  const preview = document.getElementById('card-preview');
+  preview.style.background = p.cardBg;
+  const els = ['card-brand-text', 'card-my', 'card-pname', 'card-tagline', 'card-url'];
+  els.forEach(function(id) {
+    document.getElementById(id).style.color = p.cardText;
+  });
+  document.getElementById('card-pname').textContent = p.name;
+  document.getElementById('card-tagline').textContent = '"' + p.quote + '"';
+  showScreen('screen-card');
+}
+
+function downloadCard() {
+  const card = document.getElementById('card-preview');
+  html2canvas(card, { scale: 3, useCORS: true, backgroundColor: null }).then(function(canvas) {
+    const link = document.createElement('a');
+    link.download = 'my-summer-personality.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+}
+
+function retake() {
+  startQuiz();
+}
+</script>
+</body>
+</html>
