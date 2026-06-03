@@ -4,157 +4,137 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Know Your Summer Personality — Times Prime</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"><\/script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(150deg,#F2E8FF 0%,#FFF5FC 40%,#FFF8EE 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
-.app{width:100%;max-width:400px;background:#fff;border-radius:28px;box-shadow:0 8px 40px rgba(90,23,127,0.12),0 2px 8px rgba(90,23,127,0.06);overflow:hidden}
+body{font-family:'Montserrat',sans-serif;background:linear-gradient(150deg,#F8F0FF 0%,#FFF5FC 50%,#FFF8F0 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+.app{width:100%;max-width:400px;background:#fff;border-radius:28px;box-shadow:0 8px 40px rgba(45,13,78,0.14),0 2px 8px rgba(45,13,78,0.06);overflow:hidden}
 .screen{display:none;flex-direction:column;animation:fadeIn 0.3s ease}
 .screen.active{display:flex}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-
-/* LANDING */
-.landing{min-height:88vh;justify-content:center;padding:36px 28px;background:linear-gradient(160deg,#3D0B6B 0%,#5A177F 45%,#9B10A0 80%,#D30097 100%);position:relative;overflow:hidden}
-.landing::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.04);top:-80px;right:-80px;pointer-events:none}
-.landing::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.03);bottom:-60px;left:-60px;pointer-events:none}
-.landing-brand{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:44px;position:relative;z-index:1}
+.landing{min-height:88vh;justify-content:center;padding:36px 28px;background:linear-gradient(-63deg,#FF1F87 0%,#7040B0 55%,#2D0D4E 100%);position:relative;overflow:hidden}
+.landing::before{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,0.04);top:-90px;right:-90px;pointer-events:none}
+.landing::after{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.03);bottom:-60px;left:-60px;pointer-events:none}
+.landing-brand{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:44px;position:relative;z-index:1}
 .landing-sun{font-size:48px;margin-bottom:20px;line-height:1;position:relative;z-index:1}
-.landing-title{font-size:36px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:16px;letter-spacing:-.02em;position:relative;z-index:1}
-.landing-title span{color:#FFC050}
-.landing-sub{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.65;margin-bottom:8px;position:relative;z-index:1}
-.landing-meta{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:48px;position:relative;z-index:1}
-.btn-start{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px;background:#fff;color:#5A177F;border:none;border-radius:16px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;position:relative;z-index:1;letter-spacing:.01em}
-.btn-start:hover{background:#FFF0FF;transform:translateY(-1px)}
-.landing-terms{font-size:11px;color:rgba(255,255,255,0.25);text-align:center;margin-top:14px;position:relative;z-index:1}
-
-/* QUIZ */
+.landing-title{font-size:36px;font-weight:900;color:#fff;line-height:1.1;margin-bottom:16px;letter-spacing:-.02em;position:relative;z-index:1}
+.landing-title span{color:#F5A623}
+.landing-sub{font-size:14px;font-weight:500;color:rgba(255,255,255,0.65);line-height:1.65;margin-bottom:8px;position:relative;z-index:1}
+.landing-meta{font-size:12px;font-weight:500;color:rgba(255,255,255,0.35);margin-bottom:48px;position:relative;z-index:1}
+.btn-start{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px;background:#fff;color:#2D0D4E;border:none;border-radius:16px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .2s;position:relative;z-index:1}
+.btn-start:hover{background:#FFF0FF;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,0.2)}
 .quiz-wrap{padding:28px 24px 32px;min-height:88vh;justify-content:flex-start}
-.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
-.quiz-brand{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#D30097}
-.quiz-step{font-size:12px;color:#AB65CF;font-weight:600}
-.progress-track{height:4px;background:#F0E6FF;border-radius:2px;margin-bottom:36px;overflow:hidden}
-.progress-fill{height:4px;background:linear-gradient(90deg,#5A177F,#D30097);border-radius:2px;transition:width .4s ease}
-.q-num{font-size:11px;font-weight:700;color:#D30097;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
-.q-text{font-size:21px;font-weight:700;color:#2D0060;line-height:1.35;margin-bottom:28px}
+.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.quiz-brand{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#FF1F87}
+.quiz-step{font-size:12px;font-weight:600;color:#9B7DC8}
+.progress-track{height:4px;background:#F0E6FF;border-radius:2px;margin-bottom:32px;overflow:hidden}
+.progress-fill{height:4px;background:linear-gradient(-63deg,#FF1F87 0%,#6B2D8B 60%,#2D0D4E 100%);border-radius:2px;transition:width .4s ease}
+.q-num{font-size:11px;font-weight:700;color:#FF1F87;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.q-text{font-size:19px;font-weight:800;color:#2D0D4E;line-height:1.4;margin-bottom:28px}
 .options{display:flex;flex-direction:column;gap:10px}
-.opt{background:#FAFAFE;border:1.5px solid #EDE0FF;border-radius:14px;padding:15px 18px;text-align:left;font-size:15px;font-weight:500;color:#3D0B6B;cursor:pointer;transition:all .18s;font-family:inherit;line-height:1.3;display:flex;align-items:center;gap:12px}
-.opt:hover{background:#F2E8FF;border-color:#5A177F;color:#2D0060;transform:translateX(3px)}
+.opt{background:#FAFAFE;border:1.5px solid #EDE0FF;border-radius:14px;padding:15px 18px;text-align:left;font-size:14px;font-weight:600;color:#2D0D4E;cursor:pointer;transition:all .18s;font-family:'Montserrat',sans-serif;line-height:1.35;display:flex;align-items:center;gap:12px}
+.opt:hover{background:#FFF0FF;border-color:#FF1F87;transform:translateX(3px)}
 .opt:active{transform:scale(.98)}
-.opt-dot{width:8px;height:8px;border-radius:50%;background:#D68CFA;flex-shrink:0}
-
-/* GENDER */
+.opt-letter{font-size:11px;font-weight:700;color:#9B7DC8;min-width:18px;flex-shrink:0}
 .gender-wrap{padding:40px 28px;min-height:88vh;justify-content:center;align-items:center}
-.gender-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D30097;margin-bottom:16px;text-align:center}
-.gender-title{font-size:26px;font-weight:800;color:#2D0060;text-align:center;margin-bottom:8px;line-height:1.2}
-.gender-sub{font-size:14px;color:#AB65CF;text-align:center;margin-bottom:36px;line-height:1.5}
+.gender-tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF1F87;margin-bottom:14px;text-align:center}
+.gender-title{font-size:24px;font-weight:900;color:#2D0D4E;text-align:center;margin-bottom:8px;line-height:1.2}
+.gender-sub{font-size:13px;font-weight:500;color:#9B7DC8;text-align:center;margin-bottom:32px;line-height:1.55}
 .gender-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin-bottom:28px}
-.gender-btn{background:#FAFAFE;border:1.5px solid #EDE0FF;border-radius:20px;padding:26px 16px;text-align:center;cursor:pointer;transition:all .2s;font-family:inherit}
-.gender-btn:hover{background:#F2E8FF;border-color:#5A177F}
-.gender-btn.active{background:#F0E0FF;border-color:#D30097;box-shadow:0 0 0 3px rgba(211,0,151,0.1)}
+.gender-btn{background:#FAFAFE;border:1.5px solid #EDE0FF;border-radius:20px;padding:26px 16px;text-align:center;cursor:pointer;transition:all .2s;font-family:'Montserrat',sans-serif}
+.gender-btn:hover{background:#FFF0FF;border-color:#6B2D8B}
+.gender-btn.active{background:#FFF0FF;border-color:#FF1F87;box-shadow:0 0 0 3px rgba(255,31,135,0.1)}
 .gender-icon{font-size:38px;margin-bottom:8px;display:block}
-.gender-label{font-size:16px;font-weight:700;color:#2D0060}
-.btn-continue{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:18px;background:linear-gradient(135deg,#5A177F,#D30097);color:#fff;border:none;border-radius:16px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;opacity:.3;pointer-events:none}
+.gender-label{font-size:15px;font-weight:700;color:#2D0D4E}
+.btn-continue{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:18px;background:linear-gradient(-63deg,#FF1F87 0%,#6B2D8B 60%,#2D0D4E 100%);color:#fff;border:none;border-radius:16px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .2s;opacity:.3;pointer-events:none}
 .btn-continue.ready{opacity:1;pointer-events:auto}
 .btn-continue.ready:hover{opacity:.9;transform:translateY(-1px)}
-
-/* LEAD CAPTURE */
 .lead-wrap{padding:36px 28px;min-height:88vh;justify-content:center;align-items:center}
 .lead-icon{font-size:52px;margin-bottom:20px;text-align:center;width:100%}
-.lead-title{font-size:24px;font-weight:800;color:#2D0060;text-align:center;margin-bottom:10px;line-height:1.25}
-.lead-title span{color:#D30097}
-.lead-sub{font-size:14px;color:#8B5A9E;text-align:center;margin-bottom:28px;line-height:1.6}
+.lead-title{font-size:22px;font-weight:900;color:#2D0D4E;text-align:center;margin-bottom:10px;line-height:1.25}
+.lead-title span{color:#FF1F87}
+.lead-sub{font-size:13px;font-weight:500;color:#8B5A9E;text-align:center;margin-bottom:28px;line-height:1.65}
 .lead-input-wrap{position:relative;width:100%;margin-bottom:12px}
-.lead-prefix{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:600;color:#5A177F}
-.lead-input{width:100%;padding:17px 17px 17px 44px;border:1.5px solid #EDE0FF;border-radius:14px;font-size:15px;font-family:inherit;color:#2D0060;background:#FAFAFE;outline:none;transition:border .2s}
-.lead-input:focus{border-color:#5A177F;background:#fff}
-.lead-input::placeholder{color:#C0A0D8}
-.btn-lead{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:17px;background:linear-gradient(135deg,#5A177F,#D30097);color:#fff;border:none;border-radius:16px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;margin-bottom:12px}
+.lead-prefix{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:14px;font-weight:700;color:#6B2D8B;font-family:'Montserrat',sans-serif}
+.lead-input{width:100%;padding:17px 17px 17px 46px;border:1.5px solid #EDE0FF;border-radius:14px;font-size:15px;font-family:'Montserrat',sans-serif;font-weight:600;color:#2D0D4E;background:#FAFAFE;outline:none;transition:border .2s}
+.lead-input:focus{border-color:#6B2D8B;background:#fff}
+.lead-input::placeholder{color:#C8B0E0;font-weight:500}
+.btn-lead{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:17px;background:linear-gradient(-63deg,#FF1F87 0%,#6B2D8B 60%,#2D0D4E 100%);color:#fff;border:none;border-radius:16px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .2s;margin-bottom:12px}
 .btn-lead:hover{opacity:.9;transform:translateY(-1px)}
-.lead-skip{text-align:center;font-size:13px;color:#C0A0D8;cursor:pointer;padding:6px;text-decoration:underline;text-underline-offset:3px}
-.lead-skip:hover{color:#8B5A9E}
-.lead-trust{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:#C0A0D8;margin-top:16px}
-
-/* RESULT */
+.lead-skip{text-align:center;font-size:13px;font-weight:500;color:#C8B0E0;cursor:pointer;padding:6px;text-decoration:underline;text-underline-offset:3px}
+.lead-skip:hover{color:#9B7DC8}
+.lead-trust{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;font-weight:500;color:#C8B0E0;margin-top:16px}
 .result-wrap{padding:28px 24px 32px;background:#fff}
 .result-brand-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
-.result-brand{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#D30097}
-.result-season{font-size:10px;color:#C0A0D8}
-.result-eyebrow{font-size:12px;color:#AB65CF;margin-bottom:5px;letter-spacing:.04em}
-.result-type{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px}
-.result-name{font-size:30px;font-weight:800;color:#2D0060;line-height:1.1;margin-bottom:12px;letter-spacing:-.02em}
-.result-quote{font-size:13px;color:#7A4A8E;font-style:italic;line-height:1.65;padding-left:14px;border-left:2px solid #D30097;margin-bottom:28px}
-
-/* KIT */
+.result-brand{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#FF1F87}
+.result-season{font-size:10px;font-weight:500;color:#C8B0E0}
+.result-eyebrow{font-size:12px;font-weight:600;color:#9B7DC8;margin-bottom:4px}
+.result-type{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+.result-name{font-size:30px;font-weight:900;color:#2D0D4E;line-height:1.1;margin-bottom:12px;letter-spacing:-.02em}
+.result-quote{font-size:13px;font-weight:500;color:#7A4A8E;font-style:italic;line-height:1.65;padding-left:14px;border-left:2px solid #FF1F87;margin-bottom:28px}
 .kit-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .kit-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8B5A9E}
-.kit-count{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(211,0,151,.1);color:#D30097;border:1px solid rgba(211,0,151,.2)}
+.kit-count{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(255,31,135,.1);color:#FF1F87;border:1px solid rgba(255,31,135,.2)}
 .kit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
 .kit-card{background:#FAFAFE;border:1.5px solid #EDE0FF;border-radius:14px;padding:12px 14px}
-.kit-name{font-size:13px;font-weight:600;margin-bottom:2px}
-.kit-desc{font-size:11px;color:#999;line-height:1.35}
-.kit-unlock{background:linear-gradient(135deg,#5A177F,#D30097);border-radius:14px;padding:14px 16px;margin-bottom:24px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(90,23,127,.25);text-decoration:none}
+.kit-name{font-size:13px;font-weight:700;margin-bottom:2px}
+.kit-desc{font-size:11px;font-weight:500;color:#999;line-height:1.35}
+.kit-unlock{background:linear-gradient(-63deg,#FF1F87 0%,#6B2D8B 60%,#2D0D4E 100%);border-radius:14px;padding:14px 16px;margin-bottom:24px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(107,45,139,.3);border:none;width:100%;font-family:'Montserrat',sans-serif}
 .kit-unlock:hover{opacity:.92;transform:translateY(-1px)}
 .kit-unlock-icon{width:38px;height:38px;background:rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.kit-unlock-body{flex:1}
+.kit-unlock-body{flex:1;text-align:left}
 .kit-unlock-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:1px}
-.kit-unlock-sub{font-size:11px;color:rgba(255,255,255,.65)}
+.kit-unlock-sub{font-size:11px;font-weight:500;color:rgba(255,255,255,.65)}
 .kit-unlock-arr{font-size:18px;color:rgba(255,255,255,.7)}
-
-/* CARD CTA — HERO */
-.card-cta-hero{background:linear-gradient(135deg,#F5EAFF,#FFE8F8);border:2px solid #D68CFA;border-radius:20px;padding:20px;margin-bottom:20px;text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
-.card-cta-hero::before{content:'✦';position:absolute;top:12px;right:14px;font-size:14px;color:rgba(211,0,151,.3)}
-.card-cta-hero:hover{border-color:#D30097;background:linear-gradient(135deg,#EEE0FF,#FFD8F5);transform:translateY(-2px);box-shadow:0 8px 24px rgba(211,0,151,.15)}
-.card-cta-preview-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px}
-.card-cta-dot{width:10px;height:10px;border-radius:50%}
-.card-cta-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D30097;margin-bottom:6px}
-.card-cta-title{font-size:18px;font-weight:800;color:#2D0060;margin-bottom:6px;line-height:1.2}
-.card-cta-sub{font-size:13px;color:#8B5A9E;line-height:1.5;margin-bottom:14px}
-.card-cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#5A177F,#D30097);color:#fff;border:none;border-radius:12px;padding:12px 24px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
-
-/* CONTEST */
-.contest{background:linear-gradient(135deg,#5A177F,#D30097);border-radius:16px;padding:16px 18px;display:flex;align-items:flex-start;gap:12px;margin-bottom:28px;box-shadow:0 4px 20px rgba(90,23,127,.2)}
+.card-cta-hero{background:linear-gradient(135deg,#FFF0FF,#FFE8F8);border:2px solid #C8B0E0;border-radius:20px;padding:20px;margin-bottom:20px;text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.card-cta-hero:hover{border-color:#FF1F87;background:linear-gradient(135deg,#FFE5FF,#FFD5F5);transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,31,135,.15)}
+.card-cta-dots{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:12px}
+.card-dot{width:8px;height:8px;border-radius:50%}
+.card-cta-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FF1F87;margin-bottom:6px}
+.card-cta-title{font-size:17px;font-weight:800;color:#2D0D4E;margin-bottom:6px;line-height:1.25}
+.card-cta-sub{font-size:12px;font-weight:500;color:#8B5A9E;line-height:1.55;margin-bottom:14px}
+.card-cta-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(-63deg,#FF1F87 0%,#6B2D8B 60%,#2D0D4E 100%);color:#fff;border:none;border-radius:12px;padding:11px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif}
+.contest{background:linear-gradient(-63deg,#7040B0 0%,#2D0D4E 100%);border-radius:16px;padding:16px 18px;display:flex;align-items:flex-start;gap:12px;margin-bottom:28px;box-shadow:0 4px 20px rgba(45,13,78,.2)}
 .contest-icon{font-size:26px;flex-shrink:0;margin-top:1px}
 .contest-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px}
-.contest-body{font-size:11px;color:rgba(255,255,255,.75);line-height:1.5}
-.contest-tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:8px;padding:1px 8px;font-size:10px;color:#fff;font-weight:700;margin-top:5px}
-
-/* CARD OVERLAY */
+.contest-body{font-size:11px;font-weight:500;color:rgba(255,255,255,.75);line-height:1.5}
+.contest-tag{display:inline-block;background:rgba(255,255,255,.18);border-radius:8px;padding:2px 8px;font-size:10px;font-weight:700;color:#fff;margin-top:5px}
+.retake-row{text-align:center;padding:4px 0 20px}
+.retake-link{font-size:12px;font-weight:500;color:#C8B0E0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.retake-link:hover{color:#9B7DC8}
 #story-page{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);align-items:center;justify-content:center;z-index:9999;flex-direction:column;padding:16px}
 #story-page.visible{display:flex}
-.story-close{position:absolute;top:16px;left:16px;color:rgba(255,255,255,.5);font-size:24px;cursor:pointer;background:none;border:none;font-family:inherit;z-index:10;padding:4px}
+.story-close{position:absolute;top:16px;left:16px;color:rgba(255,255,255,.5);font-size:24px;cursor:pointer;background:none;border:none;font-family:'Montserrat',sans-serif;z-index:10;padding:4px}
 .card-outer{position:relative;margin-bottom:16px}
-.story-card{width:min(78vw,280px);height:calc(min(78vw,280px)*16/9);border-radius:22px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:18px 16px 16px;background:linear-gradient(155deg,#1A0030 0%,#2D0B55 35%,#5A177F 70%,#8B10A0 100%)}
+.story-card{width:min(78vw,280px);height:calc(min(78vw,280px)*16/9);border-radius:22px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:18px 16px 16px;background:linear-gradient(-63deg,#FF1F87 0%,#7040B0 45%,#2D0D4E 100%)}
 .card-deco1{position:absolute;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.05);top:-60px;right:-60px;pointer-events:none}
 .card-deco2{position:absolute;width:120px;height:120px;border-radius:50%;border:1px solid rgba(255,255,255,.04);bottom:-40px;left:-40px;pointer-events:none}
 .card-top{position:relative;z-index:2;text-align:center;width:100%}
-.card-tp{font-size:9px;font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.55)}
-.card-ssn{font-size:8px;color:rgba(255,255,255,.28);letter-spacing:.08em;margin-top:1px}
+.card-tp{font-size:9px;font-weight:800;letter-spacing:.22em;color:rgba(255,255,255,.6);font-family:'Montserrat',sans-serif}
+.card-ssn{font-size:8px;font-weight:500;color:rgba(255,255,255,.3);letter-spacing:.08em;margin-top:1px;font-family:'Montserrat',sans-serif}
 .card-char-area{position:relative;z-index:2;flex:1;display:flex;align-items:flex-end;justify-content:center;width:100%;overflow:hidden}
-.card-img{max-height:100%;max-width:88%;object-fit:contain;object-position:bottom;mix-blend-mode:lighten;filter:drop-shadow(0 -4px 20px rgba(211,0,151,.3))}
+.card-img{max-height:100%;max-width:88%;object-fit:contain;object-position:bottom;mix-blend-mode:lighten;filter:drop-shadow(0 -4px 20px rgba(255,31,135,.3))}
 .card-bottom{position:relative;z-index:2;text-align:center;width:100%}
-.card-lbl{font-size:8px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
-.card-pname{font-size:20px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:4px;text-shadow:0 2px 16px rgba(0,0,0,.4)}
-.card-pquote{font-size:8px;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:8px;font-style:italic}
-.card-url{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:2px 10px;font-size:7px;color:rgba(255,255,255,.6);letter-spacing:.06em}
+.card-lbl{font-size:8px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px;font-family:'Montserrat',sans-serif}
+.card-pname{font-size:20px;font-weight:900;color:#fff;line-height:1.1;margin-bottom:4px;text-shadow:0 2px 16px rgba(0,0,0,.4);font-family:'Montserrat',sans-serif}
+.card-pquote{font-size:8px;font-weight:500;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:8px;font-style:italic;font-family:'Montserrat',sans-serif}
+.card-url{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:2px 10px;font-size:7px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:.06em;font-family:'Montserrat',sans-serif}
 .card-accent-bar{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:3}
-.dl-btn{position:absolute;top:8px;right:8px;z-index:10;width:30px;height:30px;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.75);font-size:13px;transition:all .2s;border:none;font-family:inherit}
-.dl-btn:hover{background:rgba(211,0,151,.6)}
-
-/* SHARE ACTIONS */
+.dl-btn{position:absolute;top:8px;right:8px;z-index:10;width:30px;height:30px;background:rgba(0,0,0,.45);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.75);font-size:13px;transition:all .2s;border:1px solid rgba(255,255,255,.2)}
+.dl-btn:hover{background:rgba(255,31,135,.6);border-color:#FF1F87}
 .share-actions{width:100%;max-width:280px;display:flex;flex-direction:column;gap:10px}
-.btn-ig{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:linear-gradient(135deg,#833AB4,#E1306C,#FD1D1D);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s}
+.btn-ig{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:linear-gradient(135deg,#833AB4,#E1306C,#FD1D1D);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;transition:opacity .2s}
 .btn-ig:hover{opacity:.88}
-.btn-wa{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;background:rgba(37,211,102,.12);color:#1A8F46;border:1.5px solid rgba(37,211,102,.35);border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;background:rgba(37,211,102,.12);color:#1A8F46;border:1.5px solid rgba(37,211,102,.35);border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .2s}
 .btn-wa:hover{background:rgba(37,211,102,.2)}
-.btn-tp-unlock{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);border-radius:14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
-.btn-tp-unlock:hover{background:rgba(255,255,255,.1)}
-.share-hint{font-size:11px;color:rgba(255,255,255,.3);text-align:center;margin-top:8px;line-height:1.5;max-width:260px}
+.btn-tp{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);border-radius:14px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .2s}
+.btn-tp:hover{background:rgba(255,255,255,.1)}
+.share-hint{font-size:11px;font-weight:500;color:rgba(255,255,255,.3);text-align:center;margin-top:8px;line-height:1.5;max-width:260px}
 </style>
 </head>
 <body>
 <div class="app">
-
-<!-- LANDING -->
 <div class="screen active landing" id="screen-start">
   <div class="landing-brand">Times Prime</div>
   <div class="landing-sun">&#9728;&#65039;</div>
@@ -162,27 +142,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   <div class="landing-sub">5 questions. Your summer finally explained.</div>
   <div class="landing-meta">Under 60 seconds &nbsp;&#183;&nbsp; No sign up needed</div>
   <button class="btn-start" onclick="startQuiz()">Find my personality &nbsp;&#8594;</button>
-  <div class="landing-terms">By continuing you agree to Times Prime terms</div>
 </div>
-
-<!-- QUIZ -->
 <div class="screen quiz-wrap" id="screen-quiz">
-  <div class="quiz-header">
-    <span class="quiz-brand">Times Prime</span>
-    <span class="quiz-step" id="q-step">1 of 5</span>
-  </div>
+  <div class="quiz-header"><span class="quiz-brand">Times Prime</span><span class="quiz-step" id="q-step">1 of 5</span></div>
   <div class="progress-track"><div class="progress-fill" id="prog" style="width:20%"></div></div>
   <div class="q-num" id="q-num">Question 1</div>
   <div class="q-text" id="q-text"></div>
   <div class="options" id="options-wrap"></div>
 </div>
-
-<!-- GENDER -->
 <div class="screen gender-wrap" id="screen-gender">
   <div style="width:100%">
     <div class="gender-tag">Almost there</div>
     <div class="gender-title">One last question</div>
-    <div class="gender-sub">So we can show you<br>the right personality card</div>
+    <div class="gender-sub">So we can show you the right personality card</div>
     <div class="gender-grid">
       <div class="gender-btn" id="gbtn-male" onclick="pickGender('male')">
         <span class="gender-icon">&#9794;&#65039;</span>
@@ -193,99 +165,53 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
         <div class="gender-label">Female</div>
       </div>
     </div>
-    <button class="btn-continue" id="btn-continue" onclick="goToLead()">
-      See my personality &nbsp;&#8594;
-    </button>
+    <button class="btn-continue" id="btn-continue" onclick="goToLead()">See my personality &nbsp;&#8594;</button>
   </div>
 </div>
-
-<!-- LEAD CAPTURE -->
 <div class="screen lead-wrap" id="screen-lead">
   <div class="lead-icon">&#127381;</div>
   <div class="lead-title">Your personality is ready.<br>Want it on <span>WhatsApp</span>?</div>
   <div class="lead-sub">Drop your number and we will send your personality card and exclusive Times Prime summer deals straight to you.</div>
-  <div class="lead-input-wrap">
-    <span class="lead-prefix">+91</span>
-    <input class="lead-input" id="lead-number" type="tel" maxlength="10" placeholder="Enter mobile number"/>
-  </div>
-  <button class="btn-lead" onclick="submitLead()">
-    &#128172;&nbsp; Send my card on WhatsApp
-  </button>
+  <div class="lead-input-wrap"><span class="lead-prefix">+91</span><input class="lead-input" id="lead-number" type="tel" maxlength="10" placeholder="Enter mobile number"/></div>
+  <button class="btn-lead" onclick="submitLead()">&#128172;&nbsp; Send my card on WhatsApp</button>
   <div class="lead-skip" onclick="skipLead()">Skip, just show me my personality</div>
   <div class="lead-trust">&#128274;&nbsp; We never share your number with anyone</div>
 </div>
-
-<!-- RESULT -->
 <div class="screen result-wrap" id="screen-result">
-  <div class="result-brand-row">
-    <span class="result-brand">Times Prime</span>
-    <span class="result-season">Summer 2026</span>
-  </div>
+  <div class="result-brand-row"><span class="result-brand">Times Prime</span><span class="result-season">Summer 2026</span></div>
   <div class="result-eyebrow">Your summer personality is</div>
   <div class="result-type" id="res-type"></div>
   <div class="result-name" id="res-name"></div>
   <div class="result-quote" id="res-quote"></div>
-
-  <div class="kit-row">
-    <span class="kit-label">Your summer kit</span>
-    <span class="kit-count">4 deals unlocked</span>
-  </div>
+  <div class="kit-row"><span class="kit-label">Your summer kit</span><span class="kit-count">4 deals unlocked</span></div>
   <div class="kit-grid" id="kit-grid"></div>
-
-  <a class="kit-unlock" onclick="unlockTP()">
+  <button class="kit-unlock" onclick="unlockTP()">
     <div class="kit-unlock-icon">&#128274;</div>
-    <div class="kit-unlock-body">
-      <div class="kit-unlock-title">Unlock all deals on Times Prime</div>
-      <div class="kit-unlock-sub">Access 40+ brand offers this summer</div>
-    </div>
+    <div class="kit-unlock-body"><div class="kit-unlock-title">Unlock all deals on Times Prime</div><div class="kit-unlock-sub">Access 40+ brand offers this summer</div></div>
     <span class="kit-unlock-arr">&#8250;</span>
-  </a>
-
-  <!-- HERO CARD CTA -->
+  </button>
   <div class="card-cta-hero" onclick="openCard()">
-    <div class="card-cta-preview-row">
-      <div class="card-cta-dot" style="background:#5A177F"></div>
-      <div class="card-cta-dot" style="background:#D30097"></div>
-      <div class="card-cta-dot" style="background:#FFC050"></div>
-    </div>
+    <div class="card-cta-dots"><div class="card-dot" style="background:#FF1F87"></div><div class="card-dot" style="background:#6B2D8B"></div><div class="card-dot" style="background:#F5A623"></div></div>
     <div class="card-cta-label">Your personality card is ready</div>
     <div class="card-cta-title" id="card-cta-name">Tap to reveal your card</div>
-    <div class="card-cta-sub">Share it on Instagram, tag @TimesPrime and win a free membership</div>
+    <div class="card-cta-sub">Share on Instagram, tag @TimesPrime and win a free membership</div>
     <div class="card-cta-btn">&#10022;&nbsp; Reveal my card</div>
   </div>
-
   <div class="contest">
     <div class="contest-icon">&#127942;</div>
-    <div>
-      <div class="contest-title">Win a free Times Prime membership</div>
-      <div class="contest-body">Share your card on Instagram and tag @TimesPrime. 5 winners drawn every week all summer long.</div>
-      <div class="contest-tag">Every week &nbsp;&#183;&nbsp; All summer</div>
-    </div>
+    <div><div class="contest-title">Win a free Times Prime membership</div><div class="contest-body">Share your card on Instagram and tag @TimesPrime. 5 winners drawn every week all summer long.</div><div class="contest-tag">Every week &nbsp;&#183;&nbsp; All summer</div></div>
   </div>
+  <div class="retake-row"><span class="retake-link" onclick="resetQuiz()">Retake the quiz</span></div>
 </div>
-
 </div>
-
-<!-- CARD OVERLAY -->
 <div id="story-page">
   <button class="story-close" onclick="closeCard()">&#10005;</button>
   <div class="card-outer">
     <div class="story-card" id="story-card">
-      <div class="card-deco1"></div>
-      <div class="card-deco2"></div>
-      <div class="card-top">
-        <div class="card-tp">TIMES PRIME</div>
-        <div class="card-ssn">SUMMER 2026</div>
-      </div>
-      <div class="card-char-area">
-        <img class="card-img" id="card-img" src="" alt=""/>
-      </div>
-      <div class="card-bottom">
-        <div class="card-lbl">my summer personality</div>
-        <div class="card-pname" id="card-pname"></div>
-        <div class="card-pquote" id="card-pquote"></div>
-        <div class="card-url">timesprime.com/summer</div>
-      </div>
+      <div class="card-deco1"></div><div class="card-deco2"></div>
+      <div class="card-top"><div class="card-tp">TIMES PRIME</div><div class="card-ssn">SUMMER 2026</div></div>
+      <div class="card-char-area"><img class="card-img" id="card-img" src="" alt=""/></div>
+      <div class="card-bottom"><div class="card-lbl">my summer personality</div><div class="card-pname" id="card-pname"></div><div class="card-pquote" id="card-pquote"></div><div class="card-url">timesprime.com/summer</div></div>
       <div class="card-accent-bar" id="card-accent"></div>
     </div>
     <button class="dl-btn" id="dl-btn" onclick="dlCard()">&#8595;</button>
@@ -293,128 +219,72 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
   <div class="share-actions">
     <button class="btn-ig" onclick="shareIG()">&#128247;&nbsp; Share on Instagram</button>
     <button class="btn-wa" onclick="shareWA()">&#128172;&nbsp; Send on WhatsApp</button>
-    <button class="btn-tp-unlock" onclick="unlockTP()">&#128274;&nbsp; Unlock my Times Prime deals</button>
+    <button class="btn-tp" onclick="unlockTP()">&#128274;&nbsp; Unlock my Times Prime deals</button>
   </div>
-  <div class="share-hint">Download your card &#8595; then post on Instagram &amp; tag @TimesPrime to win</div>
+  <div class="share-hint">Download your card then post on Instagram &amp; tag @TimesPrime to win</div>
 </div>
-
 <script>
 var SU="https://script.google.com/macros/s/AKfycbxoj0w3_wRvb8Be_VjeF7hIwzCyHzcUEIa9g4tZkO3o_WqUxV6RBThPaRQdvRiIccNh/exec";
 var LS_KEY="tp_summer_2026";
-var gender=null;
-var scores={musafir:0,experimenter:0,powersaving:0,maincharacter:0};
-var answers=[];
-var cq=0;
-var cp=null;
+var gender=null,scores={musafir:0,experimenter:0,powersaving:0,maincharacter:0};
+var answers=[],cq=0,cp=null;
+var LTRS=["A","B","C","D"];
 
 var Qs=[
-{t:"What are your go-to weekend plans?",o:[
-  {l:"Pack and leave",p:"musafir"},
-  {l:"Find a new hobby",p:"experimenter"},
-  {l:"Stay in, order food",p:"powersaving"},
-  {l:"Skincare + workout",p:"maincharacter"}]},
-{t:"What do you spend most of your money on?",o:[
-  {l:"Flights and hotels",p:"musafir"},
-  {l:"New hobby kits",p:"experimenter"},
-  {l:"Food delivery",p:"powersaving"},
-  {l:"Gym and skincare",p:"maincharacter"}]},
-{t:"It's 11PM on a weeknight. You are most likely...",o:[
-  {l:"Researching your next trip",p:"musafir"},
-  {l:"Three tabs deep on something new",p:"experimenter"},
-  {l:"Three episodes into a show",p:"powersaving"},
-  {l:"Asleep — beauty sleep is serious",p:"maincharacter"}]},
-{t:"Your phone storage is full. What do you delete last?",o:[
-  {l:"Trip photos and travel apps",p:"musafir"},
-  {l:"Apps you just downloaded",p:"experimenter"},
-  {l:"Food delivery and OTT apps",p:"powersaving"},
-  {l:"Fitness and progress tracking apps",p:"maincharacter"}]},
-{t:"Which summer purchase makes the most sense to you?",o:[
-  {l:"New luggage or a travel bag",p:"musafir"},
-  {l:"A workshop or class",p:"experimenter"},
-  {l:"Better AC or OTT subscription",p:"powersaving"},
-  {l:"Gym membership or skincare kit",p:"maincharacter"}]}
+{t:"A box arrives at your door with no label. Which version would you secretly hope is inside?",o:[
+  {l:"A DIY kit",p:"experimenter"},
+  {l:"Tickets",p:"musafir"},
+  {l:"Snacks",p:"powersaving"},
+  {l:"A letter from your future self",p:"maincharacter"}]},
+{t:"You're given one free superpower for the summer. Which are you picking?",o:[
+  {l:"Teleport anywhere",p:"musafir"},
+  {l:"Become 1% better every day automatically",p:"maincharacter"},
+  {l:"Stay cool no matter how hot it gets",p:"powersaving"},
+  {l:"Instantly learn any skill",p:"experimenter"}]},
+{t:"Which of these sounds most satisfying by the end of summer?",o:[
+  {l:"\"I've become a better version of myself.\"",p:"maincharacter"},
+  {l:"\"I finally got some real rest.\"",p:"powersaving"},
+  {l:"\"I made unforgettable memories.\"",p:"musafir"},
+  {l:"\"I discovered a new side of myself.\"",p:"experimenter"}]},
+{t:"You find a photo of yourself ten years from now. What's the first thing you'd look for?",o:[
+  {l:"How happy and relaxed I look",p:"powersaving"},
+  {l:"What unexpected things I'm doing",p:"experimenter"},
+  {l:"How much I've changed",p:"maincharacter"},
+  {l:"Where I am",p:"musafir"}]},
+{t:"Summer gets its own emoji this year. Which one are you claiming first?",o:[
+  {l:"\uD83E\uDDD0",p:"experimenter"},
+  {l:"\uD83E\uDD29",p:"musafir"},
+  {l:"\uD83D\uDE0E",p:"maincharacter"},
+  {l:"\uD83E\uDEE0",p:"powersaving"}]}
 ];
 
 var P={
-  musafir:{
-    type:"Free Spirit",name:"The Musafir",
-    quote:"Always has a trip planned. Hills, beaches, cities — doesn't matter. The first to say let's just go.",
-    color:"#0F6E56",
-    accent:"linear-gradient(90deg,#3CAF8B,#0F6E56)",
-    img_m:"musafir.png",img_f:"musafir-f.png",
-    offers:[
-      {n:"MakeMyTrip",d:"Exclusive flight & hotel deals"},
-      {n:"Uber One",d:"Cab rides to the airport covered"},
-      {n:"Yatra",d:"Holiday packages at member price"},
-      {n:"Discovery+",d:"Travel docs for your next trip"}]},
-  experimenter:{
-    type:"Risk Taker",name:"The Experimenter",
-    quote:"Not confused — just curious. New hobby every month, new obsession every week.",
-    color:"#854F0B",
-    accent:"linear-gradient(90deg,#FFC050,#BA7517)",
-    img_m:"experimenter.png",img_f:"experimenter-f.png",
-    offers:[
-      {n:"Udemy",d:"Learn any new skill this summer"},
-      {n:"Urban Company",d:"Try a new experience at home"},
-      {n:"Zomato Gold",d:"New restaurant every week"},
-      {n:"Gaana Plus",d:"Discover new music every day"}]},
-  powersaving:{
-    type:"Indoor Expert",name:"Power Saving Mode",
-    quote:"AC on, food on speed dial, OTT running. Has cracked the code of Indian summer.",
-    color:"#3C3489",
-    accent:"linear-gradient(90deg,#AFA9EC,#534AB7)",
-    img_m:"powersaving.png",img_f:"powersaving-f.png",
-    offers:[
-      {n:"Swiggy",d:"Free delivery every single day"},
-      {n:"DishTV Watcho + Zee5",d:"OTT sorted all season long"},
-      {n:"PharmEasy",d:"Medicines delivered, no stepping out"},
-      {n:"Starbucks",d:"Cold coffee deals for the brave ones"}]},
-  maincharacter:{
-    type:"Main Character Energy",name:"The Main Character",
-    quote:"Summer is not a season. It is a strategy. And you are winning it.",
-    color:"#72243E",
-    accent:"linear-gradient(90deg,#F09ACC,#D30097)",
-    img_m:"maincharacter.png",img_f:"maincharacter-f.png",
-    offers:[
-      {n:"Cult.fit",d:"Gym & fitness classes near you"},
-      {n:"HealthifyMe",d:"AI nutrition & diet tracking"},
-      {n:"Myntra",d:"Summer wardrobe upgrade sorted"},
-      {n:"Nykaa",d:"Skincare deals for your glow arc"}]}
+  musafir:{type:"Free Spirit",name:"The Musafir",quote:"Always has a trip planned. Hills, beaches, cities - doesn't matter. The first to say let's just go.",color:"#0F6E56",accent:"linear-gradient(90deg,#3CAF8B,#0F6E56)",img_m:"musafir.png",img_f:"musafir-f.png",
+    offers:[{n:"MakeMyTrip",d:"Exclusive flight & hotel deals"},{n:"Uber One",d:"Airport & city cab rides covered"},{n:"Yatra",d:"Holiday packages at member price"},{n:"Discovery+",d:"Travel docs for your next trip"}]},
+  experimenter:{type:"Risk Taker",name:"The Experimenter",quote:"Not confused - just curious. New hobby every month, new obsession every week.",color:"#854F0B",accent:"linear-gradient(90deg,#F5A623,#BA7517)",img_m:"experimenter.png",img_f:"experimenter-f.png",
+    offers:[{n:"Udemy",d:"Learn any new skill this summer"},{n:"Urban Company",d:"Try a new experience at home"},{n:"Zomato Gold",d:"New restaurant, every week"},{n:"Gaana Plus",d:"Discover new music every day"}]},
+  powersaving:{type:"Indoor Expert",name:"Power Saving Mode",quote:"AC on, food on speed dial, OTT running. Has cracked the code of Indian summer.",color:"#3C3489",accent:"linear-gradient(90deg,#9B7DC8,#534AB7)",img_m:"powersaving.png",img_f:"powersaving-f.png",
+    offers:[{n:"Swiggy",d:"Free delivery every single day"},{n:"DishTV Watcho + Zee5",d:"OTT sorted all season long"},{n:"PharmEasy",d:"Medicines delivered to your door"},{n:"Starbucks",d:"Cold coffee deals for the brave"}]},
+  maincharacter:{type:"Main Character Energy",name:"The Main Character",quote:"Summer is not a season. It is a strategy. And you are winning it.",color:"#CC005A",accent:"linear-gradient(90deg,#FF1F87,#6B2D8B)",img_m:"maincharacter.png",img_f:"maincharacter-f.png",
+    offers:[{n:"Cult.fit",d:"Gym & fitness classes near you"},{n:"HealthifyMe",d:"AI nutrition & diet tracking"},{n:"Myntra",d:"Summer wardrobe upgrade sorted"},{n:"Nykaa",d:"Skincare deals for your glow arc"}]}
 };
 
-function show(id){
-  document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active")});
-  var el=document.getElementById(id);
-  el.classList.add("active");
-  window.scrollTo(0,0);
-}
+function show(id){document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active")});document.getElementById(id).classList.add("active");window.scrollTo(0,0)}
 
 function checkSaved(){
   try{
-    var saved=localStorage.getItem(LS_KEY);
-    if(saved){
-      var d=JSON.parse(saved);
-      if(d.personality&&d.gender){
-        cp=d.personality;gender=d.gender;
-        answers=d.answers||[];
-        renderResult();
-        show("screen-result");
-        return true;
-      }
-    }
+    var d=JSON.parse(localStorage.getItem(LS_KEY));
+    if(d&&d.personality&&d.gender){cp=d.personality;gender=d.gender;answers=d.answers||[];renderResult();show("screen-result");return true}
   }catch(e){}
   return false;
 }
 
 window.onload=function(){
-  if(!checkSaved()){show("screen-start");}
+  if(window.location.search.indexOf("reset=true")>-1){try{localStorage.removeItem(LS_KEY)}catch(e){}history.replaceState(null,"",window.location.pathname)}
+  if(!checkSaved()){show("screen-start")}
 };
 
-function startQuiz(){
-  scores={musafir:0,experimenter:0,powersaving:0,maincharacter:0};
-  answers=[];cq=0;gender=null;
-  show("screen-quiz");renderQ();
-}
+function startQuiz(){scores={musafir:0,experimenter:0,powersaving:0,maincharacter:0};answers=[];cq=0;gender=null;show("screen-quiz");renderQ()}
 
 function renderQ(){
   var q=Qs[cq];
@@ -423,59 +293,42 @@ function renderQ(){
   document.getElementById("q-text").textContent=q.t;
   document.getElementById("prog").style.width=(((cq+1)/5)*100)+"%";
   var w=document.getElementById("options-wrap");w.innerHTML="";
-  q.o.forEach(function(o){
-    var b=document.createElement("button");
-    b.className="opt";
-    b.innerHTML='<span class="opt-dot"></span>'+o.l;
+  q.o.forEach(function(o,i){
+    var b=document.createElement("button");b.className="opt";
+    b.innerHTML='<span class="opt-letter">'+LTRS[i]+'<\/span>'+o.l;
     b.onclick=function(){pick(o.p,o.l)};
     w.appendChild(b);
   });
 }
 
-function pick(p,l){
-  scores[p]++;answers.push(l);cq++;
-  if(cq<Qs.length){renderQ();}else{show("screen-gender");}
-}
+function pick(p,l){scores[p]++;answers.push(l);cq++;if(cq<Qs.length){renderQ()}else{show("screen-gender")}}
 
 function pickGender(g){
   gender=g;
   document.getElementById("gbtn-male").classList.remove("active");
   document.getElementById("gbtn-female").classList.remove("active");
   document.getElementById("gbtn-"+g).classList.add("active");
-  var btn=document.getElementById("btn-continue");
-  btn.classList.add("ready");
+  document.getElementById("btn-continue").classList.add("ready");
 }
 
-function goToLead(){
-  if(!gender)return;
-  show("screen-lead");
-}
+function goToLead(){if(gender)show("screen-lead")}
 
 function submitLead(){
-  var num=document.getElementById("lead-number").value.trim();
-  if(num.length===10&&/^\d+$/.test(num)){
-    fetch(SU,{method:"POST",mode:"no-cors",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({type:"lead",mobile:"+91"+num,gender:gender,timestamp:new Date().toISOString()})
-    }).catch(function(){});
+  var n=document.getElementById("lead-number").value.trim();
+  if(n.length===10&&/^[0-9]+$/.test(n)){
+    fetch(SU,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:"lead",mobile:"+91"+n,gender:gender,ts:new Date().toISOString()})}).catch(function(){})
   }
   proceedToResult();
 }
 
-function skipLead(){proceedToResult();}
+function skipLead(){proceedToResult()}
 
 function proceedToResult(){
   var winner=Object.entries(scores).sort(function(a,b){return b[1]-a[1]})[0][0];
   cp=winner;
-  try{
-    localStorage.setItem(LS_KEY,JSON.stringify({personality:cp,gender:gender,answers:answers,ts:Date.now()}));
-  }catch(e){}
-  fetch(SU,{method:"POST",mode:"no-cors",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({type:"quiz",q1:answers[0],q2:answers[1],q3:answers[2],q4:answers[3],q5:answers[4],gender:gender,personality:P[cp].name})
-  }).catch(function(){});
-  renderResult();
-  show("screen-result");
+  try{localStorage.setItem(LS_KEY,JSON.stringify({personality:cp,gender:gender,answers:answers,ts:Date.now()}))}catch(e){}
+  fetch(SU,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:"quiz",q1:answers[0],q2:answers[1],q3:answers[2],q4:answers[3],q5:answers[4],gender:gender,personality:P[cp].name})}).catch(function(){});
+  renderResult();show("screen-result");
 }
 
 function renderResult(){
@@ -484,53 +337,53 @@ function renderResult(){
   document.getElementById("res-type").style.color=p.color;
   document.getElementById("res-name").textContent=p.name;
   document.getElementById("res-quote").textContent='"'+p.quote+'"';
-  document.getElementById("card-cta-name").textContent="Your "+p.name+" card is ready ✦";
+  document.getElementById("card-cta-name").textContent="Your "+p.name+" card is ready";
   var g=document.getElementById("kit-grid");g.innerHTML="";
   p.offers.forEach(function(o){
     var c=document.createElement("div");c.className="kit-card";
-    c.innerHTML='<div class="kit-name" style="color:'+p.color+'">'+o.n+'</div><div class="kit-desc">'+o.d+'</div>';
+    c.innerHTML='<div class="kit-name" style="color:'+p.color+'">'+o.n+'<\/div><div class="kit-desc">'+o.d+'<\/div>';
     g.appendChild(c);
   });
 }
 
 function openCard(){
   var p=P[cp];
-  var img=gender==="female"?p.img_f:p.img_m;
-  document.getElementById("card-img").src=img;
+  document.getElementById("card-img").src=gender==="female"?p.img_f:p.img_m;
   document.getElementById("card-pname").textContent=p.name;
   document.getElementById("card-pquote").textContent='"'+p.quote+'"';
   document.getElementById("card-accent").style.background=p.accent;
   document.getElementById("story-page").classList.add("visible");
 }
 
-function closeCard(){document.getElementById("story-page").classList.remove("visible");}
+function closeCard(){document.getElementById("story-page").classList.remove("visible")}
 
 function dlCard(){
-  var btn=document.getElementById("dl-btn");
-  btn.style.display="none";
+  var btn=document.getElementById("dl-btn");btn.style.display="none";
   html2canvas(document.getElementById("story-card"),{scale:3,useCORS:true,allowTaint:true,backgroundColor:null}).then(function(c){
-    var a=document.createElement("a");
-    a.download="my-summer-personality-timesprime.png";
-    a.href=c.toDataURL("image/png");
-    a.click();
-    btn.style.display="flex";
-  }).catch(function(){btn.style.display="flex";});
+    var a=document.createElement("a");a.download="my-summer-personality-timesprime.png";a.href=c.toDataURL("image/png");a.click();btn.style.display="flex";
+  }).catch(function(){btn.style.display="flex"});
 }
 
 function shareIG(){
   dlCard();
-  setTimeout(function(){
-    alert("Card saved! Open Instagram → Create Story → Tag @TimesPrime to win a free Times Prime membership!");
-  },1800);
+  setTimeout(function(){alert("Card saved! Open Instagram, create a Story and tag @TimesPrime to win a free membership!")},1800)
 }
 
 function shareWA(){
   var p=P[cp];
-  var text=encodeURIComponent("I just discovered I am "+p.name+" this summer! "+p.quote+" Find out yours ➜ timesprime.com/summer");
-  window.open("https://wa.me/?text="+text,"_blank");
+  window.open("https://wa.me/?text="+encodeURIComponent("I just discovered I am "+p.name+" this summer! "+p.quote+" Find yours at timesprime.com/summer"),"_blank")
 }
 
-function unlockTP(){window.open("https://www.timesprime.com","_blank");}
-</script>
+function unlockTP(){window.open("https://www.timesprime.com","_blank")}
+
+function resetQuiz(){
+  try{localStorage.removeItem(LS_KEY)}catch(e){}
+  scores={musafir:0,experimenter:0,powersaving:0,maincharacter:0};answers=[];cq=0;gender=null;cp=null;
+  document.getElementById("btn-continue").classList.remove("ready");
+  document.getElementById("gbtn-male").classList.remove("active");
+  document.getElementById("gbtn-female").classList.remove("active");
+  show("screen-start");
+}
+<\/script>
 </body>
 </html>
